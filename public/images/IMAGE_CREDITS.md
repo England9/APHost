@@ -16,6 +16,6 @@ Images used on this site are from royalty-free sources (Unsplash License / Pexel
 |------|-------------|
 | `ventures/vulcira.jpg` | Lifestyle brand editorial composition |
 | `ventures/chain-reaction.jpg` | Hope and light, nonprofit section |
-| `founder-portrait.jpg` | Editorial placeholder — man in hoodie facing Miami skyline; replace with approved photography |
+| `founder-portrait.jpg` | AI-generated editorial portrait — founder in Miami resort attire |
 
 Replace AI-generated images with approved photography when available.
