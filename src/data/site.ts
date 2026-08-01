@@ -5,7 +5,7 @@ export const site = {
     'Vulcira works with Apollo Twelve LLC to build a focused group of ventures across fashion, culture, and long-term brand development.',
   url: 'https://vulcira.com',
   email: 'inquiries@vulcira.com',
-  ogImage: '/images/og-vulcira.svg',
+  ogImage: '/images/og-vulcira.jpg',
   social: {
     linkedin: 'https://linkedin.com/company/vulcira',
     instagram: 'https://instagram.com/vulcira',

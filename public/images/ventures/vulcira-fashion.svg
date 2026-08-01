@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" fill="none">
-  <rect width="900" height="1200" fill="#0f0e0d"/>
-  <ellipse cx="450" cy="520" rx="220" ry="340" fill="#1a1918" stroke="#33302d" stroke-width="1"/>
-  <line x1="0" y1="900" x2="900" y2="900" stroke="#2a2826"/>
-  <text x="450" y="1160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" letter-spacing="0.18em" fill="#6b6560">FASHION  PLACEHOLDER</text>
-</svg>

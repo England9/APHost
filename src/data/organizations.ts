@@ -25,8 +25,8 @@ export const organizations: Organization[] = [
     fullDescription:
       'Vulcira operates at the intersection of high fashion and contemporary culture — deliberate in tone, precise in execution, and built for longevity.',
     websiteUrl: null,
-    image: '/images/ventures/vulcira.svg',
-    imageAlt: 'Editorial fashion composition — placeholder for Vulcira',
+    image: '/images/ventures/vulcira.jpg',
+    imageAlt: 'Editorial high fashion photograph',
     actionLabel: 'Explore Vulcira',
     pagePath: '/ventures/vulcira',
     displayOrder: 1,
@@ -41,8 +41,8 @@ export const organizations: Organization[] = [
     fullDescription:
       'Golden Days develops work rooted in warmth, optimism, and the emotional texture of earlier chapters — made relevant for today.',
     websiteUrl: null,
-    image: '/images/ventures/golden-days.svg',
-    imageAlt: 'Material texture study — placeholder for Golden Days',
+    image: '/images/ventures/golden-days.jpg',
+    imageAlt: 'Golden sunset over a beach',
     actionLabel: 'View Golden Days',
     pagePath: '/ventures/golden-days',
     displayOrder: 2,
@@ -57,8 +57,8 @@ export const organizations: Organization[] = [
     fullDescription:
       'The Chain Reaction Project supports programs and partnerships that create meaningful community impact through accountable, thoughtful action.',
     websiteUrl: null,
-    image: '/images/ventures/chain-reaction.svg',
-    imageAlt: 'Abstract composition — placeholder for The Chain Reaction Project',
+    image: '/images/ventures/chain-reaction.jpg',
+    imageAlt: 'Hand reaching toward warm light',
     actionLabel: 'Visit The Chain Reaction Project',
     pagePath: '/ventures/chain-reaction-project',
     displayOrder: 3,

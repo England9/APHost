@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" fill="none">
-  <rect width="480" height="640" fill="#131211"/>
-  <rect x="140" y="80" width="200" height="280" fill="#1d1c1b"/>
-  <rect x="180" y="400" width="120" height="160" fill="#171615"/>
-  <text x="240" y="610" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" letter-spacing="0.16em" fill="#6b6560">PORTRAIT PLACEHOLDER</text>
-</svg>

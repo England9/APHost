@@ -37,7 +37,7 @@ export const venturePages: VenturePage[] = [
           'Fashion here is not a seasonal exercise. Vulcira is developed as a lasting brand platform — one that values quality of thought, quality of making, and the discipline required to sustain both.',
       },
     ],
-    image: '/images/ventures/vulcira.svg',
+    image: '/images/ventures/vulcira.jpg',
     imageAlt: 'Editorial fashion composition — placeholder for Vulcira',
   },
   {
@@ -64,7 +64,7 @@ export const venturePages: VenturePage[] = [
           'Youth fades, but the values behind Golden Days do not. Every venture under this name is approached with long-term intent — designed to earn trust, not just attention.',
       },
     ],
-    image: '/images/ventures/golden-days.svg',
+    image: '/images/ventures/golden-days.jpg',
     imageAlt: 'Material texture study — placeholder for Golden Days',
   },
   {
@@ -91,7 +91,7 @@ export const venturePages: VenturePage[] = [
           'The project reflects a shared belief in giving back — in building something that extends beyond commercial ambition and serves people who need it most.',
       },
     ],
-    image: '/images/ventures/chain-reaction.svg',
+    image: '/images/ventures/chain-reaction.jpg',
     imageAlt: 'Abstract composition — placeholder for The Chain Reaction Project',
   },
 ];

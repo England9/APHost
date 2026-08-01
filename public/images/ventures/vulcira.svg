@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" fill="none">
-  <rect width="800" height="1000" fill="#111010"/>
-  <rect x="80" y="120" width="640" height="760" fill="#1a1918" stroke="#2f2c29" stroke-width="1"/>
-  <line x1="80" y1="500" x2="720" y2="500" stroke="#2a2826"/>
-  <line x1="400" y1="120" x2="400" y2="880" stroke="#2a2826"/>
-  <text x="400" y="960" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" letter-spacing="0.18em" fill="#6b6560">VULCIRA  PLACEHOLDER</text>
-</svg>
