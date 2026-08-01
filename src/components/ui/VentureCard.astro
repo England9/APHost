@@ -1,0 +1,42 @@
+---
+interface Props {
+  eyebrow: string;
+  name: string;
+  description: string;
+  href: string;
+  actionLabel: string;
+  image: string;
+  imageAlt: string;
+}
+
+const { eyebrow, name, description, href, actionLabel, image, imageAlt } = Astro.props;
+---
+
+<article class="relative overflow-hidden border hairline">
+  <div class="aspect-[3/4] overflow-hidden">
+    <img
+      src={image}
+      alt={imageAlt}
+      class="h-full w-full object-cover"
+      loading="lazy"
+      width="900"
+      height="1200"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-canvas)] via-[color-mix(in_srgb,var(--color-canvas)_25%,transparent)] to-transparent"></div>
+  </div>
+  <div class="absolute inset-x-0 bottom-0 p-8 md:p-10">
+    <p class="label-caps mb-3 text-[var(--color-ink)]/80">{eyebrow}</p>
+    <h3 class="font-serif text-[2rem] text-[var(--color-ink)]">{name}</h3>
+    <p class="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
+      {description}
+    </p>
+    <div class="mt-6">
+      <a
+        href={href}
+        class="inline-block border-b border-[var(--color-ink-muted)] pb-1 font-sans text-[0.8125rem] font-medium tracking-[0.04em] uppercase text-[var(--color-ink-muted)] transition-colors hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]"
+      >
+        {actionLabel}
+      </a>
+    </div>
+  </div>
+</article>

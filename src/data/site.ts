@@ -1,8 +1,8 @@
 export const site = {
   name: 'Vulcira',
-  title: 'Vulcira — Business, Fashion, and Long-Term Initiatives',
+  title: 'Vulcira — Lifestyle, Ventures, and Long-Term Initiatives',
   description:
-    'Vulcira works with Apollo Twelve LLC to build a focused group of ventures across fashion, culture, and long-term brand development.',
+    'Vulcira works with Apollo Twelve LLC to build a focused group of ventures across lifestyle, culture, and long-term brand development.',
   url: 'https://vulcira.com',
   email: 'inquiries@vulcira.com',
   ogImage: '/images/og-vulcira.jpg',

@@ -16,29 +16,29 @@ export const venturePages: VenturePage[] = [
   {
     slug: 'vulcira',
     name: 'Vulcira',
-    eyebrow: 'High Fashion',
-    title: 'Contemporary fashion with disciplined creative direction.',
+    eyebrow: 'Lifestyle Brand',
+    title: 'A lifestyle brand built around considered living.',
     intro:
-      'Vulcira is a fashion-led venture shaped by editorial sensibility, strong visual identity, and a commitment to craft. The work sits at the intersection of contemporary culture and considered design — deliberate in tone, precise in execution, and built for longevity rather than trend.',
+      'Vulcira is a lifestyle brand shaped by culture, environment, and the details of everyday life. The work spans products, experiences, and visual identity — developed with restraint, quality, and a long-term view of what it means to live well.',
     sections: [
       {
-        heading: 'Visual Identity',
+        heading: 'Everyday Culture',
         body:
-          'Every collection and communication is approached with the rigor of a creative studio. Typography, material, silhouette, and pacing are treated as a unified language — restrained, intentional, and unmistakably Vulcira.',
+          'Vulcira draws from the rhythms of daily life — home, travel, personal style, and the objects people choose to keep close. The brand is interested in what lasts: habits, materials, and environments that feel intentional rather than performative.',
       },
       {
-        heading: 'Cultural Position',
+        heading: 'Products & Experiences',
         body:
-          'Vulcira draws from fashion, publishing, and modern enterprise without borrowing their clichés. The brand is contemporary without being loud, fashionable without being disposable.',
+          'From consumer goods to curated experiences, Vulcira develops offerings that reflect a coherent point of view. Each release is considered in context — how it fits into a life, not just a market category.',
       },
       {
-        heading: 'Long-Term Direction',
+        heading: 'Lasting Identity',
         body:
-          'Fashion here is not a seasonal exercise. Vulcira is developed as a lasting brand platform — one that values quality of thought, quality of making, and the discipline required to sustain both.',
+          'Vulcira is built as a durable lifestyle platform. The emphasis is on consistency of taste, clarity of purpose, and the discipline required to grow a brand that people return to over time.',
       },
     ],
     image: '/images/ventures/vulcira.jpg',
-    imageAlt: 'Editorial fashion composition — placeholder for Vulcira',
+    imageAlt: 'Lifestyle brand editorial photograph',
   },
   {
     slug: 'golden-days',
@@ -65,7 +65,7 @@ export const venturePages: VenturePage[] = [
       },
     ],
     image: '/images/ventures/golden-days.jpg',
-    imageAlt: 'Material texture study — placeholder for Golden Days',
+    imageAlt: 'Golden sunset over a beach',
   },
   {
     slug: 'chain-reaction-project',
@@ -92,7 +92,7 @@ export const venturePages: VenturePage[] = [
       },
     ],
     image: '/images/ventures/chain-reaction.jpg',
-    imageAlt: 'Abstract composition — placeholder for The Chain Reaction Project',
+    imageAlt: 'Hand reaching toward warm light',
   },
 ];
 

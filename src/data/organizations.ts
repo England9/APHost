@@ -21,12 +21,12 @@ export const organizations: Organization[] = [
     name: 'Vulcira',
     category: 'platform',
     shortDescription:
-      'A fashion-led venture defined by editorial sensibility, strong visual identity, and disciplined creative direction.',
+      'A lifestyle brand devoted to considered living — products, experiences, and identity shaped by culture and everyday life.',
     fullDescription:
-      'Vulcira operates at the intersection of high fashion and contemporary culture — deliberate in tone, precise in execution, and built for longevity.',
+      'Vulcira develops lifestyle offerings with a long-term perspective: restrained in tone, consistent in quality, and grounded in how people actually live.',
     websiteUrl: null,
     image: '/images/ventures/vulcira.jpg',
-    imageAlt: 'Editorial high fashion photograph',
+    imageAlt: 'Lifestyle brand editorial photograph',
     actionLabel: 'Explore Vulcira',
     pagePath: '/ventures/vulcira',
     displayOrder: 1,

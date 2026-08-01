@@ -1,113 +1,65 @@
 ---
 import { getHomepageVentures } from '../../data/organizations';
 import SectionLabel from '../ui/SectionLabel.astro';
-import Button from '../ui/Button.astro';
+import VentureCard from '../ui/VentureCard.astro';
 
 const ventures = getHomepageVentures();
 const [vulcira, goldenDays, chainReaction] = ventures;
 ---
 
 <section id="ventures" class="section-pad" aria-labelledby="ventures-heading">
-  <div class="content-wrap-wide space-y-20 md:space-y-28">
+  <div class="content-wrap-wide space-y-16 md:space-y-20">
     <div class="max-w-2xl">
       <SectionLabel label="Our Ventures" />
       <h2
         id="ventures-heading"
-        class="mt-6 font-serif text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] text-[var(--color-ink)]"
+        class="mt-6 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.12] text-[var(--color-ink)]"
       >
         Three distinct directions. One shared standard.
       </h2>
       <p class="mt-6 text-[1.0625rem] leading-relaxed text-[var(--color-ink-muted)]">
-        From high fashion to nostalgic experiences to generous nonprofit work — each venture is developed with intention and its own voice.
+        From lifestyle and culture to nostalgic experiences to generous nonprofit work — each venture is developed with intention and its own voice.
       </p>
     </div>
 
-    {
-      vulcira && (
-        <article class="grid items-center gap-10 border-t hairline pt-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
-          <div class="order-2 lg:order-1">
-            <p class="label-caps mb-4">High Fashion</p>
-            <h3 class="font-serif text-[clamp(2rem,3.5vw,3rem)] text-[var(--color-ink)]">{vulcira.name}</h3>
-            <p class="mt-6 max-w-lg text-[1.0625rem] leading-relaxed text-[var(--color-ink-muted)]">
-              {vulcira.shortDescription}
-            </p>
-            <div class="mt-8">
-              <Button href={vulcira.pagePath} variant="secondary">
-                {vulcira.actionLabel}
-              </Button>
-            </div>
-          </div>
-          <figure class="order-1 lg:order-2">
-            <div class="aspect-[4/5] overflow-hidden border hairline bg-[var(--color-canvas-subtle)]">
-              <img
-                src={vulcira.image}
-                alt={vulcira.imageAlt}
-                class="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]"
-                loading="lazy"
-                width="800"
-                height="1000"
-              />
-            </div>
-          </figure>
-        </article>
-      )
-    }
-
-    <div class="grid gap-16 lg:grid-cols-2">
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
       {
-        goldenDays && (
-          <article class="flex flex-col justify-between border hairline bg-[var(--color-canvas-raised)] p-8 md:p-10">
-            <div>
-              <p class="label-caps mb-5">Nostalgia & Youth</p>
-              <h3 class="font-serif text-[2rem] text-[var(--color-ink)]">{goldenDays.name}</h3>
-              <p class="mt-5 text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
-                {goldenDays.shortDescription}
-              </p>
-            </div>
-            <div class="mt-10 flex items-end justify-between gap-6 border-t hairline pt-8">
-              <img
-                src={goldenDays.image}
-                alt={goldenDays.imageAlt}
-                class="h-24 w-20 shrink-0 object-cover"
-                loading="lazy"
-                width="160"
-                height="192"
-              />
-              <Button href={goldenDays.pagePath} variant="secondary">
-                {goldenDays.actionLabel}
-              </Button>
-            </div>
-          </article>
+        vulcira && (
+          <VentureCard
+            eyebrow="Lifestyle Brand"
+            name={vulcira.name}
+            description={vulcira.shortDescription}
+            href={vulcira.pagePath}
+            actionLabel={vulcira.actionLabel}
+            image={vulcira.image}
+            imageAlt={vulcira.imageAlt}
+          />
         )
       }
-
+      {
+        goldenDays && (
+          <VentureCard
+            eyebrow="Nostalgia & Youth"
+            name={goldenDays.name}
+            description={goldenDays.shortDescription}
+            href={goldenDays.pagePath}
+            actionLabel={goldenDays.actionLabel}
+            image={goldenDays.image}
+            imageAlt={goldenDays.imageAlt}
+          />
+        )
+      }
       {
         chainReaction && (
-          <article class="relative overflow-hidden border hairline">
-            <div class="aspect-[3/4] overflow-hidden">
-              <img
-                src={chainReaction.image}
-                alt={chainReaction.imageAlt}
-                class="h-full w-full object-cover"
-                loading="lazy"
-                width="900"
-                height="1200"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-canvas)] via-transparent to-transparent"></div>
-            </div>
-            <div class="absolute inset-x-0 bottom-0 p-8 md:p-10">
-              <p class="label-caps mb-3 text-[var(--color-ink)]/70">Nonprofit</p>
-              <h3 class="font-serif text-[2rem] text-[var(--color-ink)]">{chainReaction.name}</h3>
-              <p class="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
-                {chainReaction.shortDescription}
-              </p>
-              <div class="mt-6">
-                <Button href={chainReaction.pagePath} variant="secondary">
-                  {chainReaction.actionLabel}
-                </Button>
-              </div>
-            </div>
-          </article>
+          <VentureCard
+            eyebrow="Nonprofit"
+            name={chainReaction.name}
+            description={chainReaction.shortDescription}
+            href={chainReaction.pagePath}
+            actionLabel={chainReaction.actionLabel}
+            image={chainReaction.image}
+            imageAlt={chainReaction.imageAlt}
+          />
         )
       }
     </div>
