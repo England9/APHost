@@ -98,11 +98,19 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
   return Response.json({ success: true });
 }
 
+function isTurnstileTestOrPlaceholderKey(siteKey: string): boolean {
+  const trimmed = siteKey.trim();
+  if (!trimmed || trimmed.includes('REPLACE_WITH')) return true;
+
+  // Cloudflare dummy site keys always show "For testing only" in production.
+  // https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+  return /^[123]x0{20}[0-9A-F]{2}$/i.test(trimmed);
+}
+
 async function handleConfig(env: Env): Promise<Response> {
   const siteKey = env.TURNSTILE_SITE_KEY;
-  const isTestKey = siteKey === '1x00000000000000000000AA' || siteKey === '2x00000000000000000000AB';
 
-  if (!siteKey || isTestKey) {
+  if (isTurnstileTestOrPlaceholderKey(siteKey)) {
     return Response.json(
       {
         turnstileSiteKey: null,
