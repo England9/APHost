@@ -5,7 +5,7 @@ export const termsSections: LegalSection[] = [
     id: 'agreement',
     title: 'Agreement to Terms',
     paragraphs: [
-      'These Terms of Use ("Terms") govern your access to and use of the Vulcira website (the "Site"), operated by Apollo Twelve LLC ("Apollo Twelve," "we," "us," or "our").',
+      'These Terms of Use ("Terms") govern your access to and use of the Apollo website (the "Site"), operated by Apollo Twelve LLC ("Apollo Twelve," "we," "us," or "our").',
       'By accessing or using the Site, you agree to be bound by these Terms and our Privacy Policy, which is incorporated by reference. If you do not agree, you must not access or use the Site.',
     ],
   },
@@ -20,7 +20,7 @@ export const termsSections: LegalSection[] = [
     id: 'site-purpose',
     title: 'Purpose of the Site',
     paragraphs: [
-      'The Site provides general information about Vulcira, Golden Days, The Chain Reaction Project, and related ventures associated with Apollo Twelve LLC. The Site is for informational purposes unless we expressly state otherwise in writing.',
+      'The Site provides general information about Apollo, Vulcira, Golden Days, The Chain Reaction Project, and related ventures associated with Apollo Twelve LLC. The Site is for informational purposes unless we expressly state otherwise in writing.',
       'Nothing on the Site constitutes legal, financial, investment, tax, or professional advice. You should consult qualified professionals before making decisions based on Site content.',
     ],
   },
@@ -30,7 +30,7 @@ export const termsSections: LegalSection[] = [
     paragraphs: [
       'The Site and its content, including text, graphics, logos, images, design, layout, software, and other materials (collectively, "Content"), are owned by Apollo Twelve or its licensors and are protected by copyright, trademark, and other intellectual property laws.',
       'You may view and download Content for personal, non-commercial use only. You may not copy, reproduce, distribute, modify, create derivative works from, publicly display, publicly perform, republish, scrape, or exploit any Content without our prior written consent, except as permitted by applicable law.',
-      'Vulcira and related names, logos, and marks are trademarks or service marks of Apollo Twelve or its affiliates. Other names and marks appearing on the Site may be the property of their respective owners.',
+      'Apollo and related names, logos, and marks are trademarks or service marks of Apollo Twelve or its affiliates. Other names and marks appearing on the Site may be the property of their respective owners.',
     ],
   },
   {

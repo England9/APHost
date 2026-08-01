@@ -1,6 +1,7 @@
 ---
 import { site, navigation } from '../../data/site';
 import { ventureNavLinks } from '../../data/venture-pages';
+import Logo from '../ui/Logo.astro';
 import MobileMenu from './MobileMenu.astro';
 import VenturesDropdown from './VenturesDropdown.astro';
 ---
@@ -10,13 +11,7 @@ import VenturesDropdown from './VenturesDropdown.astro';
   data-header
 >
   <div class="content-wrap flex items-center justify-between gap-8 px-[var(--spacing-content)] py-5 md:py-6">
-    <a
-      href="/"
-      class="font-serif text-[1.375rem] tracking-[0.04em] text-[var(--color-ink)] md:text-[1.5rem]"
-      aria-label={`${site.name} home`}
-    >
-      {site.name}
-    </a>
+    <Logo />
 
     <nav class="hidden items-center gap-10 md:flex" aria-label="Primary">
       {

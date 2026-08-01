@@ -1,6 +1,7 @@
 ---
 import { site, navigation } from '../../data/site';
 import { ventureNavLinks } from '../../data/venture-pages';
+import Logo from '../ui/Logo.astro';
 
 const year = new Date().getFullYear();
 ---
@@ -9,7 +10,7 @@ const year = new Date().getFullYear();
   <div class="content-wrap-wide section-pad !pb-12 !pt-16">
     <div class="grid gap-16 lg:grid-cols-[1.2fr_1fr_1fr]">
       <div class="max-w-md space-y-8">
-        <p class="font-serif text-[1.75rem] tracking-[0.04em]">{site.name}</p>
+        <Logo linked={false} />
         <div>
           <p class="label-caps mb-3">Commercial Group</p>
           <p class="font-serif text-[1.125rem] text-[var(--color-ink)]">{site.parentCompany}</p>

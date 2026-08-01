@@ -1,14 +1,14 @@
 export const site = {
-  name: 'Vulcira',
-  title: 'Vulcira — Lifestyle, Ventures, and Long-Term Initiatives',
+  name: 'Apollo',
+  title: 'Apollo — Lifestyle, Ventures, and Long-Term Initiatives',
   description:
-    'Vulcira works with Apollo Twelve LLC to build a focused group of ventures across lifestyle, culture, and long-term brand development.',
-  url: 'https://vulcira.com',
-  ogImage: '/images/og-vulcira.jpg',
+    'Apollo is the public-facing platform for Apollo Twelve LLC — a focused group of ventures across lifestyle, culture, and long-term brand development.',
+  url: 'https://apollo12.llc',
+  ogImage: '/images/og-apollo.svg',
   turnstileSiteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA',
   social: {
-    linkedin: 'https://linkedin.com/company/vulcira',
-    instagram: 'https://instagram.com/vulcira',
+    linkedin: 'https://linkedin.com/company/apollo12',
+    instagram: 'https://instagram.com/apollo12',
   },
   parentCompany: 'Apollo Twelve LLC',
   commercialGroup: ['Vulcira', 'Golden Days'],
@@ -25,6 +25,7 @@ export const navigation = [
 ] as const;
 
 export const inquiryOptions = [
+  'Apollo',
   'Vulcira',
   'Golden Days',
   'The Chain Reaction Project',

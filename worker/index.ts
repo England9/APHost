@@ -34,7 +34,7 @@ async function verifyTurnstile(token: string, secret: string, ip: string): Promi
 }
 
 async function sendContactEmail(payload: ContactPayload, env: Env): Promise<void> {
-  const subject = `Vulcira inquiry: ${payload.interest}`;
+  const subject = `Apollo inquiry: ${payload.interest}`;
   const text = [
     `Name: ${payload.name}`,
     `Email: ${payload.email}`,
@@ -49,7 +49,7 @@ async function sendContactEmail(payload: ContactPayload, env: Env): Promise<void
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({
       personalizations: [{ to: [{ email: env.CONTACT_TO }] }],
-      from: { email: env.CONTACT_FROM, name: 'Vulcira Contact Form' },
+      from: { email: env.CONTACT_FROM, name: 'Apollo Contact Form' },
       reply_to: { email: payload.email, name: payload.name },
       subject,
       content: [{ type: 'text/plain', value: text }],

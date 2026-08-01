@@ -5,7 +5,7 @@ export const privacySections: LegalSection[] = [
     id: 'introduction',
     title: 'Introduction',
     paragraphs: [
-      'This Privacy Policy describes how Apollo Twelve LLC ("Apollo Twelve," "we," "us," or "our") collects, uses, discloses, and protects personal information when you visit the Vulcira website (the "Site"), submit inquiries through our contact form, or otherwise interact with us online.',
+      'This Privacy Policy describes how Apollo Twelve LLC ("Apollo Twelve," "we," "us," or "our") collects, uses, discloses, and protects personal information when you visit the Apollo website (the "Site"), submit inquiries through our contact form, or otherwise interact with us online.',
       'We are committed to handling personal information responsibly and in accordance with applicable privacy laws, including where applicable the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA), and the General Data Protection Regulation (GDPR) for visitors in the European Economic Area, United Kingdom, and Switzerland.',
       'By using the Site, you acknowledge that you have read this Privacy Policy. If you do not agree with our practices, please do not use the Site.',
     ],
@@ -28,7 +28,7 @@ export const privacySections: LegalSection[] = [
     title: 'How We Use Personal Information',
     paragraphs: ['We use personal information for legitimate business purposes, including:'],
     list: [
-      'Responding to inquiries and providing information about Vulcira, Golden Days, The Chain Reaction Project, and related ventures.',
+      'Responding to inquiries and providing information about Apollo, Vulcira, Golden Days, The Chain Reaction Project, and related ventures.',
       'Operating, maintaining, securing, and improving the Site.',
       'Detecting, preventing, and addressing fraud, abuse, security incidents, and technical issues.',
       'Complying with legal obligations and enforcing our Terms of Use.',
