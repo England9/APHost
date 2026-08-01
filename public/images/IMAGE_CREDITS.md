@@ -14,7 +14,7 @@ Images used on this site are from royalty-free sources (Unsplash License / Pexel
 
 | File | Description |
 |------|-------------|
-| `ventures/vulcira.jpg` | High fashion editorial composition |
+| `ventures/vulcira.jpg` | Lifestyle brand editorial composition |
 | `ventures/chain-reaction.jpg` | Hope and light, nonprofit section |
 | `founder-portrait.jpg` | Anonymous editorial silhouette placeholder |
 
