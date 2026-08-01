@@ -14,6 +14,7 @@ export const site = {
   commercialGroup: ['Vulcira', 'Golden Days'],
   founder: {
     name: 'England',
+    displayName: '"England"',
     title: 'Founder',
   },
 } as const;
