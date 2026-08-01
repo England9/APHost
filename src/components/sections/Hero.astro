@@ -1,0 +1,46 @@
+---
+import Button from '../ui/Button.astro';
+import SectionLabel from '../ui/SectionLabel.astro';
+---
+
+<section class="relative min-h-[92vh] overflow-hidden border-b hairline" aria-labelledby="hero-heading">
+  <div class="absolute inset-0">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(135deg,#0a0a0a_0%,#141210_45%,#0d0c0b_100%)]"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-y-0 right-0 w-full max-w-[58%] opacity-40 md:opacity-100"
+      aria-hidden="true"
+    >
+      <img
+        src="/images/hero-editorial.svg"
+        alt=""
+        class="h-full w-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        width="1200"
+        height="1600"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-canvas)] via-[color-mix(in_srgb,var(--color-canvas)_55%,transparent)] to-transparent"></div>
+    </div>
+  </div>
+
+  <div class="content-wrap relative z-10 flex min-h-[92vh] flex-col justify-end px-[var(--spacing-content)] pb-20 pt-36 md:pb-28 md:pt-40">
+    <div class="max-w-3xl reveal">
+      <SectionLabel label="Founder-Led Business Platform" class="mb-8" />
+      <h1
+        id="hero-heading"
+        class="font-serif text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[var(--color-ink)]"
+      >
+        Building Distinct Ventures Under a Shared Direction.
+      </h1>
+      <p class="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-[var(--color-ink-muted)] md:text-[1.125rem]">
+        Vulcira is a founder-led business platform connected to a focused group of commercial ventures and independent initiatives.
+      </p>
+      <div class="mt-12">
+        <Button href="#ventures">View the Organizations</Button>
+      </div>
+    </div>
+  </div>
+</section>

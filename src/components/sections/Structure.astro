@@ -1,0 +1,44 @@
+---
+import SectionLabel from '../ui/SectionLabel.astro';
+---
+
+<section class="section-pad" aria-labelledby="structure-heading">
+  <div class="content-wrap-wide">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-24">
+      <div>
+        <SectionLabel label="Organizational Clarity" />
+        <h2
+          id="structure-heading"
+          class="mt-6 font-serif text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.1] text-[var(--color-ink)]"
+        >
+          Structure and Relationships
+        </h2>
+      </div>
+
+      <div class="space-y-10">
+        <p class="text-[1.0625rem] leading-[1.75] text-[var(--color-ink-muted)]">
+          Apollo Twelve LLC is associated with Vulcira, Golden Days LLC, and Vulcira Fashion. The Chain Reaction Project is a separate nonprofit entity founded by the same founder and operates independently from Apollo Twelve LLC.
+        </p>
+
+        <div class="grid gap-px bg-[var(--color-line)] md:grid-cols-2" role="list">
+          <div class="bg-[var(--color-canvas)] p-6 md:p-8" role="listitem">
+            <p class="label-caps mb-3">Commercial Group</p>
+            <p class="font-serif text-[1.25rem] text-[var(--color-ink)]">Apollo Twelve LLC</p>
+            <ul class="mt-4 space-y-2 text-[0.9375rem] text-[var(--color-ink-muted)]">
+              <li>Vulcira</li>
+              <li>Golden Days LLC</li>
+              <li>Vulcira Fashion</li>
+            </ul>
+          </div>
+          <div class="bg-[var(--color-canvas)] p-6 md:p-8" role="listitem">
+            <p class="label-caps mb-3">Independent Nonprofit</p>
+            <p class="font-serif text-[1.25rem] text-[var(--color-ink)]">The Chain Reaction Project</p>
+            <p class="mt-4 text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
+              Founded by the same founder. Separate governance, separate mission, separate operations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

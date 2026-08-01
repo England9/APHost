@@ -1,0 +1,72 @@
+---
+import { navigation } from '../../data/site';
+---
+
+<button
+  type="button"
+  class="relative z-[60] flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
+  aria-expanded="false"
+  aria-controls="mobile-menu"
+  aria-label="Open menu"
+  data-menu-toggle
+>
+  <span class="block h-px w-5 bg-[var(--color-ink)] transition-transform duration-300" data-bar></span>
+  <span class="block h-px w-5 bg-[var(--color-ink)] transition-opacity duration-300" data-bar></span>
+</button>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[55] flex translate-x-full flex-col bg-[var(--color-canvas)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden"
+  data-menu-panel
+  hidden
+>
+  <div class="flex flex-1 flex-col justify-between px-[var(--spacing-content)] pb-12 pt-28">
+    <nav class="flex flex-col gap-8" aria-label="Mobile">
+      {
+        navigation.map((item, index) => (
+          <a
+            href={item.href}
+            class="font-serif text-[2.5rem] leading-none tracking-[-0.02em] text-[var(--color-ink)]"
+            data-menu-link
+            style={`animation-delay: ${index * 60}ms`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <p class="label-caps">Vulcira</p>
+  </div>
+</div>
+
+<script>
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const panel = document.querySelector('[data-menu-panel]');
+  const bars = toggle?.querySelectorAll('[data-bar]');
+  const links = panel?.querySelectorAll('[data-menu-link]');
+
+  let open = false;
+
+  function setMenuState(next: boolean) {
+    if (!toggle || !panel) return;
+    open = next;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    panel.hidden = !open;
+    panel.classList.toggle('translate-x-0', open);
+    panel.classList.toggle('translate-x-full', !open);
+    document.body.style.overflow = open ? 'hidden' : '';
+
+    if (bars && bars.length >= 2) {
+      bars[0].classList.toggle('translate-y-[6px]', open);
+      bars[0].classList.toggle('rotate-45', open);
+      bars[1].classList.toggle('opacity-0', open);
+    }
+  }
+
+  toggle?.addEventListener('click', () => setMenuState(!open));
+  links?.forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && open) setMenuState(false);
+  });
+</script>

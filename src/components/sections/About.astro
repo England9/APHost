@@ -1,0 +1,28 @@
+---
+import SectionLabel from '../ui/SectionLabel.astro';
+---
+
+<section id="about" class="section-pad border-b hairline" aria-labelledby="about-heading">
+  <div class="content-wrap-wide">
+    <div class="grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-24">
+      <div class="lg:sticky lg:top-32">
+        <SectionLabel label="About Vulcira" />
+        <h2
+          id="about-heading"
+          class="mt-6 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] text-[var(--color-ink)]"
+        >
+          A central public-facing presence for a focused group of ventures.
+        </h2>
+      </div>
+
+      <div class="space-y-8 border-l hairline pl-8 lg:pl-12">
+        <p class="text-[1.0625rem] leading-[1.75] text-[var(--color-ink-muted)] md:text-[1.125rem]">
+          Vulcira brings together a focused group of ventures operating across business, fashion, creative development, and long-term brand building. Each organization maintains its own identity, purpose, and direction while remaining connected through shared leadership and a common commitment to lasting value.
+        </p>
+        <p class="max-w-lg text-[0.9375rem] leading-relaxed text-[var(--color-ink-faint)]">
+          The platform provides organizational clarity without reducing individual ventures to interchangeable entries in a portfolio.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
