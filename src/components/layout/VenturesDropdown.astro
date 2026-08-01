@@ -2,10 +2,10 @@
 import { ventureNavLinks } from '../../data/venture-pages';
 ---
 
-<div class="group relative hidden md:block" data-ventures-dropdown>
+<div class="group relative" data-ventures-dropdown>
   <button
     type="button"
-    class="link-underline flex items-center gap-2 font-sans text-[0.8125rem] font-medium tracking-[0.04em] uppercase text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
+    class="flex items-center gap-2 font-sans text-[0.75rem] font-medium tracking-[0.1em] uppercase text-[var(--color-ink-muted)] transition-colors hover:text-[var(--color-ink)]"
     aria-expanded="false"
     aria-haspopup="true"
     data-ventures-toggle
@@ -19,17 +19,17 @@ import { ventureNavLinks } from '../../data/venture-pages';
     role="menu"
     data-ventures-menu
   >
-  {
-    ventureNavLinks.map((link) => (
-      <a
-        href={link.href}
-        class="block border-b hairline px-5 py-4 font-sans text-[0.8125rem] tracking-[0.04em] text-[var(--color-ink-muted)] transition-colors last:border-b-0 hover:bg-[var(--color-canvas-subtle)] hover:text-[var(--color-ink)]"
-        role="menuitem"
-      >
-        {link.label}
-      </a>
-    ))
-  }
+    {
+      ventureNavLinks.map((link) => (
+        <a
+          href={link.href}
+          class="block border-b hairline px-5 py-4 font-sans text-[0.75rem] tracking-[0.06em] text-[var(--color-ink-muted)] transition-colors last:border-b-0 hover:bg-[var(--color-canvas-subtle)] hover:text-[var(--color-ink)]"
+          role="menuitem"
+        >
+          {link.label}
+        </a>
+      ))
+    }
   </div>
 </div>
 

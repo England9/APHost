@@ -18,14 +18,13 @@ export const site = {
   turnstileSiteKey: '0x4AAAAAAEDdw0x1UReVe9jG',
   founder: {
     name: 'England',
-    displayName: '"England"',
+    displayName: 'England',
     title: 'Founder',
   },
 } as const;
 
 export const navigation = [
   { label: 'About', href: '/#about' },
-  { label: 'Ventures', href: '/#ventures' },
   { label: 'Initiatives', href: '/#initiatives' },
   { label: 'Contact', href: '/#contact' },
 ] as const;
