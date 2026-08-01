@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vulcira.com/sitemap-index.xml

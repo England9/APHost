@@ -1,0 +1,118 @@
+---
+import { inquiryOptions, site } from '../../data/site';
+import SectionLabel from '../ui/SectionLabel.astro';
+---
+
+<section id="contact" class="section-pad border-t hairline" aria-labelledby="contact-heading">
+  <div class="content-wrap-wide">
+    <div class="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
+      <div>
+        <SectionLabel label="Contact" />
+        <h2
+          id="contact-heading"
+          class="mt-6 font-serif text-[clamp(2rem,4vw,3rem)] leading-[1.05] text-[var(--color-ink)]"
+        >
+          Inquiries
+        </h2>
+        <p class="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
+          For business inquiries, partnerships, press, organization-specific correspondence, or general questions, please use the form or contact us directly.
+        </p>
+        <p class="mt-8">
+          <a
+            href={`mailto:${site.email}`}
+            class="link-underline font-sans text-[0.9375rem] text-[var(--color-ink)]"
+          >
+            {site.email}
+          </a>
+        </p>
+
+        <ul class="mt-10 space-y-2 text-[0.8125rem] text-[var(--color-ink-faint)]">
+          <li>Business inquiries</li>
+          <li>Partnerships</li>
+          <li>Press</li>
+          <li>Organization-specific inquiries</li>
+          <li>General correspondence</li>
+        </ul>
+      </div>
+
+      <form
+        class="space-y-6 border hairline bg-[var(--color-canvas-raised)] p-8 md:p-10"
+        action={`mailto:${site.email}`}
+        method="post"
+        enctype="text/plain"
+      >
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="space-y-2">
+            <label for="name" class="label-caps">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              autocomplete="name"
+              class="w-full border-b hairline bg-transparent px-0 py-3 text-[0.9375rem] text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-gold)]"
+            />
+          </div>
+          <div class="space-y-2">
+            <label for="email" class="label-caps">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              class="w-full border-b hairline bg-transparent px-0 py-3 text-[0.9375rem] text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-gold)]"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="company" class="label-caps">Company or Organization</label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            autocomplete="organization"
+            class="w-full border-b hairline bg-transparent px-0 py-3 text-[0.9375rem] text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-gold)]"
+          />
+        </div>
+
+        <div class="space-y-2">
+          <label for="interest" class="label-caps">Area of Interest</label>
+          <select
+            id="interest"
+            name="interest"
+            required
+            class="w-full appearance-none border-b hairline bg-transparent px-0 py-3 text-[0.9375rem] text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-gold)]"
+          >
+            {
+              inquiryOptions.map((option) => (
+                <option value={option} class="bg-[var(--color-canvas-raised)]">
+                  {option}
+                </option>
+              ))
+            }
+          </select>
+        </div>
+
+        <div class="space-y-2">
+          <label for="message" class="label-caps">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="w-full resize-y border hairline bg-[var(--color-canvas)] px-4 py-3 text-[0.9375rem] leading-relaxed text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-gold)]"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="border border-[var(--color-line)] px-7 py-3.5 font-sans text-[0.8125rem] font-medium tracking-[0.06em] uppercase text-[var(--color-ink)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+        >
+          Send Inquiry
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" fill="none">
+  <rect width="1200" height="1600" fill="#121110"/>
+  <rect x="0" y="0" width="1200" height="1600" fill="url(#g)"/>
+  <line x1="180" y1="0" x2="420" y2="1600" stroke="#2a2826" stroke-width="1"/>
+  <line x1="780" y1="0" x2="540" y2="1600" stroke="#2a2826" stroke-width="1"/>
+  <rect x="640" y="320" width="380" height="520" fill="#1a1918" stroke="#3a3632" stroke-width="1"/>
+  <rect x="120" y="880" width="280" height="180" fill="#161514"/>
+  <text x="600" y="1540" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" letter-spacing="0.2em" fill="#6b6560">HERO IMAGE PLACEHOLDER</text>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e0d0c"/>
+      <stop offset="100%" stop-color="#1a1816"/>
+    </linearGradient>
+  </defs>
+</svg>
