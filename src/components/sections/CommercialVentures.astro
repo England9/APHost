@@ -2,13 +2,12 @@
 import { getHomepageVentures } from '../../data/organizations';
 import VentureCard from '../ui/VentureCard.astro';
 
-const ventures = getHomepageVentures();
-const [vulcira, goldenDays, chainReaction] = ventures;
+const ventures = getHomepageVentures().filter((org) => org.category !== 'nonprofit');
+const [vulcira, goldenDays] = ventures;
 
 const ventureMeta = [
   { org: vulcira, index: '01', eyebrow: 'Lifestyle Brand' },
   { org: goldenDays, index: '02', eyebrow: 'Nostalgia & Culture' },
-  { org: chainReaction, index: '03', eyebrow: 'Nonprofit Initiative', id: 'initiatives' },
 ];
 ---
 
@@ -21,7 +20,7 @@ const ventureMeta = [
           id="ventures-heading"
           class="mt-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-[1.12] text-[var(--color-ink)]"
         >
-          Three distinct ventures. One shared standard.
+          Two commercial ventures. One shared standard.
         </h2>
       </div>
       <a
@@ -33,12 +32,11 @@ const ventureMeta = [
       </a>
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+    <div class="grid gap-6 md:grid-cols-2 lg:gap-8">
       {
-        ventureMeta.map(({ org, index, eyebrow, id }) =>
+        ventureMeta.map(({ org, index, eyebrow }) =>
           org ? (
             <VentureCard
-              id={id}
               index={index}
               eyebrow={eyebrow}
               name={org.name}
