@@ -31,17 +31,16 @@ npm run deploy
 
 The contact form posts to `/api/contact` and is handled by the Cloudflare Worker in `worker/index.ts`.
 
-1. Create a [Turnstile](https://developers.cloudflare.com/turnstile/) widget for your domain.
-2. Set Worker secrets:
+Messages are sent via [Resend](https://resend.com) (free tier: 3,000 emails/month). Verify `apollotwelve.org` in Resend, then set Worker secrets:
 
 ```bash
+npx wrangler secret put RESEND_API_KEY
 npx wrangler secret put TURNSTILE_SECRET_KEY
-npx wrangler secret put CONTACT_TO
 ```
 
-3. Update `CONTACT_FROM` and `TURNSTILE_SITE_KEY` in `wrangler.jsonc`.
+Update `CONTACT_TO` in `wrangler.jsonc` (or Cloudflare Dashboard variables) to your real email.
 
-See `.env.example` for local development notes.
+See `.env.example` for full setup instructions.
 
 ## Project structure
 

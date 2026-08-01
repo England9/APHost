@@ -4,6 +4,7 @@ export interface Env {
   ASSETS: Fetcher;
   TURNSTILE_SITE_KEY: string;
   TURNSTILE_SECRET_KEY: string;
+  RESEND_API_KEY: string;
   CONTACT_TO: string;
   CONTACT_FROM: string;
 }
@@ -16,6 +17,8 @@ interface ContactPayload {
   message: string;
   turnstileToken: string;
 }
+
+const PLACEHOLDER_CONTACT_TO = 'your-inbox@yourdomain.com';
 
 async function verifyTurnstile(token: string, secret: string, ip: string): Promise<boolean> {
   const body = new URLSearchParams({
@@ -44,27 +47,52 @@ async function sendContactEmail(payload: ContactPayload, env: Env): Promise<void
     payload.message,
   ].join('\n');
 
-  const response = await fetch('https://api.mailchannels.net/tx/v1/send', {
+  const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: env.CONTACT_TO }] }],
-      from: { email: env.CONTACT_FROM, name: 'Apollo Contact Form' },
-      reply_to: { email: payload.email, name: payload.name },
+      from: `Apollo Contact Form <${env.CONTACT_FROM}>`,
+      to: [env.CONTACT_TO],
+      reply_to: payload.email,
       subject,
-      content: [{ type: 'text/plain', value: text }],
+      text,
     }),
   });
 
   if (!response.ok) {
-    throw new Error(`Mail delivery failed with status ${response.status}`);
+    const detail = await response.text();
+    console.error('Resend delivery failed:', response.status, detail);
+    throw new Error(`Email delivery failed with status ${response.status}`);
   }
 }
 
+function isContactConfigured(env: Env): boolean {
+  return Boolean(
+    env.RESEND_API_KEY &&
+      env.CONTACT_TO &&
+      env.CONTACT_FROM &&
+      env.CONTACT_TO !== PLACEHOLDER_CONTACT_TO &&
+      !env.CONTACT_TO.includes('your-inbox'),
+  );
+}
+
 async function handleContact(request: Request, env: Env): Promise<Response> {
-  if (!env.TURNSTILE_SECRET_KEY || !env.CONTACT_TO || !env.CONTACT_FROM) {
+  if (!env.TURNSTILE_SECRET_KEY) {
     return Response.json(
-      { error: 'Contact form is not fully configured. Please set Cloudflare Worker secrets.' },
+      { error: 'Contact form is not fully configured. Set TURNSTILE_SECRET_KEY on the Worker.' },
+      { status: 503 },
+    );
+  }
+
+  if (!isContactConfigured(env)) {
+    return Response.json(
+      {
+        error:
+          'Email delivery is not configured. Set RESEND_API_KEY and CONTACT_TO on the Worker, then verify your domain in Resend.',
+      },
       { status: 503 },
     );
   }
@@ -92,7 +120,13 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
   try {
     await sendContactEmail({ name, email, company, interest, message, turnstileToken }, env);
   } catch {
-    return Response.json({ error: 'Unable to send your message right now. Please try again later.' }, { status: 502 });
+    return Response.json(
+      {
+        error:
+          'Unable to send your message right now. Confirm RESEND_API_KEY is set, apollotwelve.org is verified in Resend, and CONTACT_TO is your real email.',
+      },
+      { status: 502 },
+    );
   }
 
   return Response.json({ success: true });
