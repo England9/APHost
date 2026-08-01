@@ -12,6 +12,10 @@ export const site = {
   },
   parentCompany: 'Apollo Twelve LLC',
   commercialGroup: ['Vulcira', 'Golden Days'],
+  founder: {
+    name: 'England',
+    title: 'Founder',
+  },
 } as const;
 
 export const navigation = [

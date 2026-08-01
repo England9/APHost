@@ -1,5 +1,6 @@
 ---
 import SectionLabel from '../ui/SectionLabel.astro';
+import { site } from '../../data/site';
 ---
 
 <section class="section-pad border-t hairline bg-[var(--color-canvas-raised)]" aria-labelledby="founder-heading">
@@ -9,8 +10,8 @@ import SectionLabel from '../ui/SectionLabel.astro';
         <div class="aspect-[3/4] overflow-hidden border hairline bg-[var(--color-canvas-subtle)]">
           <img
             src="/images/founder-portrait.jpg"
-            alt="Founder portrait placeholder"
-            class="h-full w-full object-cover grayscale"
+            alt={`Portrait of ${site.founder.name}, ${site.founder.title}`}
+            class="h-full w-full object-cover"
             loading="lazy"
             width="480"
             height="640"
@@ -24,16 +25,14 @@ import SectionLabel from '../ui/SectionLabel.astro';
           id="founder-heading"
           class="mt-6 font-serif text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] text-[var(--color-ink)]"
         >
-          Shared Leadership
+          {site.founder.name}
         </h2>
-        <p class="mt-6 text-[1.0625rem] leading-[1.75] text-[var(--color-ink-muted)]">
-          The ventures connected through Vulcira reflect a shared approach to development, responsibility, and long-term direction — built with discipline and a commitment to work that endures.
+        <p class="mt-2 text-[0.875rem] font-medium tracking-[0.04em] uppercase text-[var(--color-ink-muted)]">
+          {site.founder.title}
         </p>
-        <div class="mt-8 border-l-2 border-[var(--color-gold)]/40 pl-6">
-          <p class="text-[0.9375rem] leading-relaxed text-[var(--color-ink-faint)]">
-            Founder biography to be added. Name, credentials, and personal history will be provided and inserted here.
-          </p>
-        </div>
+        <p class="mt-6 text-[1.0625rem] leading-[1.75] text-[var(--color-ink-muted)]">
+          England founded the ventures connected through Vulcira and The Chain Reaction Project. His work reflects a shared approach to development, responsibility, and long-term direction — built with discipline and a commitment to organizations that endure.
+        </p>
       </div>
     </div>
   </div>
