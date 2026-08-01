@@ -3,7 +3,7 @@ export const site = {
   title: 'Apollo — Lifestyle, Ventures, and Long-Term Initiatives',
   description:
     'Apollo is the public-facing platform for Apollo Twelve LLC — a focused group of ventures across lifestyle, culture, and long-term brand development.',
-  url: 'https://apollo12.llc',
+  url: 'https://apollotwelve.org',
   ogImage: '/images/og-apollo.svg',
   turnstileSiteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA',
   social: {
