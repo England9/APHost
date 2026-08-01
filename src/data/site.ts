@@ -2,7 +2,7 @@ export const site = {
   name: 'Vulcira',
   title: 'Vulcira — Business, Fashion, and Long-Term Initiatives',
   description:
-    'Vulcira is a founder-led business platform connected to a focused group of commercial ventures and independent initiatives.',
+    'Vulcira works with Apollo Twelve LLC to build a focused group of ventures across fashion, culture, and long-term brand development.',
   url: 'https://vulcira.com',
   email: 'inquiries@vulcira.com',
   ogImage: '/images/og-vulcira.svg',
@@ -11,21 +11,17 @@ export const site = {
     instagram: 'https://instagram.com/vulcira',
   },
   parentCompany: 'Apollo Twelve LLC',
-  footerStatement:
-    'Vulcira, Golden Days LLC, and Vulcira Fashion are associated with Apollo Twelve LLC. The Chain Reaction Project is a separate nonprofit entity founded by the same founder.',
+  commercialGroup: ['Vulcira', 'Golden Days'],
 } as const;
 
 export const navigation = [
-  { label: 'About', href: '#about' },
-  { label: 'Ventures', href: '#ventures' },
-  { label: 'Nonprofit', href: '#nonprofit' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/#about' },
+  { label: 'Contact', href: '/#contact' },
 ] as const;
 
 export const inquiryOptions = [
   'Vulcira',
-  'Golden Days LLC',
-  'Vulcira Fashion',
+  'Golden Days',
   'The Chain Reaction Project',
   'General Inquiry',
 ] as const;

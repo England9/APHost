@@ -1,0 +1,15 @@
+---
+import VentureLayout from '../../layouts/VentureLayout.astro';
+import { venturePages } from '../../data/venture-pages';
+
+export function getStaticPaths() {
+  return venturePages.map((venture) => ({
+    params: { slug: venture.slug },
+    props: { venture },
+  }));
+}
+
+const { venture } = Astro.props;
+---
+
+<VentureLayout venture={venture} />

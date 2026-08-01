@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" fill="none">
+  <rect width="800" height="1000" fill="#111010"/>
+  <ellipse cx="400" cy="420" rx="180" ry="280" fill="#1a1918" stroke="#33302d" stroke-width="1"/>
+  <line x1="0" y1="720" x2="800" y2="720" stroke="#2a2826"/>
+  <text x="400" y="960" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" letter-spacing="0.18em" fill="#6b6560">CHAIN REACTION  PLACEHOLDER</text>
+</svg>

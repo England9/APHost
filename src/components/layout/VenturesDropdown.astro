@@ -1,0 +1,62 @@
+---
+import { ventureNavLinks } from '../../data/venture-pages';
+---
+
+<div class="group relative hidden md:block" data-ventures-dropdown>
+  <button
+    type="button"
+    class="link-underline flex items-center gap-2 font-sans text-[0.8125rem] font-medium tracking-[0.08em] uppercase text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
+    aria-expanded="false"
+    aria-haspopup="true"
+    data-ventures-toggle
+  >
+    Ventures
+    <span class="text-[0.625rem] transition-transform duration-200 group-hover:rotate-180" aria-hidden="true">▾</span>
+  </button>
+
+  <div
+    class="invisible absolute left-0 top-full z-50 min-w-[15rem] translate-y-2 border hairline bg-[var(--color-canvas-raised)] opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
+    role="menu"
+    data-ventures-menu
+  >
+  {
+    ventureNavLinks.map((link) => (
+      <a
+        href={link.href}
+        class="block border-b hairline px-5 py-4 font-sans text-[0.8125rem] tracking-[0.04em] text-[var(--color-ink-muted)] transition-colors last:border-b-0 hover:bg-[var(--color-canvas-subtle)] hover:text-[var(--color-ink)]"
+        role="menuitem"
+      >
+        {link.label}
+      </a>
+    ))
+  }
+  </div>
+</div>
+
+<script>
+  const dropdown = document.querySelector('[data-ventures-dropdown]');
+  const toggle = dropdown?.querySelector('[data-ventures-toggle]');
+
+  toggle?.addEventListener('click', (event) => {
+    event.preventDefault();
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    dropdown?.classList.toggle('is-open', !expanded);
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!dropdown?.contains(event.target as Node)) {
+      toggle?.setAttribute('aria-expanded', 'false');
+      dropdown?.classList.remove('is-open');
+    }
+  });
+</script>
+
+<style>
+  [data-ventures-dropdown].is-open [data-ventures-menu],
+  [data-ventures-dropdown]:focus-within [data-ventures-menu] {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

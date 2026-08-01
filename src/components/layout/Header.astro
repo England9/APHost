@@ -1,7 +1,8 @@
 ---
 import { site, navigation } from '../../data/site';
+import { ventureNavLinks } from '../../data/venture-pages';
 import MobileMenu from './MobileMenu.astro';
-
+import VenturesDropdown from './VenturesDropdown.astro';
 ---
 
 <header
@@ -28,6 +29,7 @@ import MobileMenu from './MobileMenu.astro';
           </a>
         ))
       }
+      <VenturesDropdown />
     </nav>
 
     <MobileMenu />

@@ -4,13 +4,13 @@ export interface Organization {
   id: string;
   name: string;
   category: OrganizationCategory;
-  legalRelationship: string;
   shortDescription: string;
   fullDescription: string;
   websiteUrl: string | null;
   image: string;
   imageAlt: string;
   actionLabel: string;
+  pagePath: string;
   displayOrder: number;
   active: boolean;
 }
@@ -20,15 +20,15 @@ export const organizations: Organization[] = [
     id: 'vulcira',
     name: 'Vulcira',
     category: 'platform',
-    legalRelationship: 'Associated with Apollo Twelve LLC',
     shortDescription:
-      'The central business and public-facing platform connecting the broader group of ventures, ideas, and strategic initiatives.',
+      'A fashion-led venture defined by editorial sensibility, strong visual identity, and disciplined creative direction.',
     fullDescription:
-      'Vulcira serves as the central public-facing presence for a focused group of commercial ventures and founder-led initiatives. It provides organizational clarity, strategic direction, and a unified point of connection across the broader enterprise.',
+      'Vulcira operates at the intersection of high fashion and contemporary culture — deliberate in tone, precise in execution, and built for longevity.',
     websiteUrl: null,
     image: '/images/ventures/vulcira.svg',
-    imageAlt: 'Abstract architectural composition — placeholder for Vulcira',
+    imageAlt: 'Editorial fashion composition — placeholder for Vulcira',
     actionLabel: 'Explore Vulcira',
+    pagePath: '/ventures/vulcira',
     displayOrder: 1,
     active: true,
   },
@@ -36,49 +36,32 @@ export const organizations: Organization[] = [
     id: 'golden-days',
     name: 'Golden Days',
     category: 'commercial',
-    legalRelationship: 'Associated with Apollo Twelve LLC',
     shortDescription:
-      'An independent commercial venture focused on developing thoughtful products, experiences, and long-term business opportunities.',
+      'A venture devoted to bringing the nostalgia and feeling of youth into thoughtful modern-day products and experiences.',
     fullDescription:
-      'Golden Days operates as an independent commercial venture within the Apollo Twelve LLC group, developing products and experiences with a long-term perspective and disciplined creative direction.',
+      'Golden Days develops work rooted in warmth, optimism, and the emotional texture of earlier chapters — made relevant for today.',
     websiteUrl: null,
     image: '/images/ventures/golden-days.svg',
     imageAlt: 'Material texture study — placeholder for Golden Days',
     actionLabel: 'View Golden Days',
+    pagePath: '/ventures/golden-days',
     displayOrder: 2,
-    active: true,
-  },
-  {
-    id: 'vulcira-fashion',
-    name: 'Vulcira Fashion',
-    category: 'commercial',
-    legalRelationship: 'Associated with Apollo Twelve LLC',
-    shortDescription:
-      'A fashion-focused brand shaped by contemporary culture, strong visual identity, and disciplined creative direction.',
-    fullDescription:
-      'Vulcira Fashion is a fashion-focused brand operating at the intersection of contemporary culture and considered design, with a commitment to strong visual identity and lasting creative direction.',
-    websiteUrl: null,
-    image: '/images/ventures/vulcira-fashion.svg',
-    imageAlt: 'Editorial fashion composition — placeholder for Vulcira Fashion',
-    actionLabel: 'Discover Vulcira Fashion',
-    displayOrder: 3,
     active: true,
   },
   {
     id: 'chain-reaction-project',
     name: 'The Chain Reaction Project',
     category: 'nonprofit',
-    legalRelationship:
-      'Independent nonprofit entity founded by the same founder; not associated with Apollo Twelve LLC',
     shortDescription:
-      'An independent nonprofit entity founded by the same founder. Its work is separate from the commercial operations of Apollo Twelve LLC and is focused on mission-driven initiatives and public benefit.',
+      'A nonprofit initiative focused on generous, mission-driven work and lasting public benefit.',
     fullDescription:
-      'The Chain Reaction Project is a separate nonprofit organization founded by the same individual who established the commercial ventures associated with Apollo Twelve LLC. It operates independently, with its own governance, mission, and public benefit focus.',
+      'The Chain Reaction Project supports programs and partnerships that create meaningful community impact through accountable, thoughtful action.',
     websiteUrl: null,
     image: '/images/ventures/chain-reaction.svg',
     imageAlt: 'Abstract composition — placeholder for The Chain Reaction Project',
     actionLabel: 'Visit The Chain Reaction Project',
-    displayOrder: 4,
+    pagePath: '/ventures/chain-reaction-project',
+    displayOrder: 3,
     active: true,
   },
 ];
@@ -89,8 +72,8 @@ export function getActiveOrganizations(category?: OrganizationCategory) {
     .sort((a, b) => a.displayOrder - b.displayOrder);
 }
 
-export function getCommercialVentures() {
-  return getActiveOrganizations().filter((org) => org.category !== 'nonprofit');
+export function getHomepageVentures() {
+  return getActiveOrganizations();
 }
 
 export function getNonprofit() {
