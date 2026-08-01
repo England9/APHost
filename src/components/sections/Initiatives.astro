@@ -1,5 +1,7 @@
 ---
 import { initiativesContent } from '../../data/initiatives';
+
+const slides = initiativesContent.pillars;
 ---
 
 <section id="initiatives" class="section-pad border-t hairline bg-[var(--color-canvas-raised)]" aria-labelledby="initiatives-heading">
@@ -19,15 +21,71 @@ import { initiativesContent } from '../../data/initiatives';
       </p>
     </div>
 
-    <div class="grid gap-8 md:grid-cols-3">
-      {
-        initiativesContent.pillars.map((pillar) => (
-          <div class="border-t border-[var(--color-gold)]/40 pt-6">
-            <h3 class="font-serif text-[1.25rem] text-[var(--color-ink)]">{pillar.title}</h3>
-            <p class="mt-4 text-[0.875rem] leading-relaxed text-[var(--color-ink-muted)]">{pillar.body}</p>
-          </div>
-        ))
-      }
+    <div class="relative">
+      <div
+        id="pillars-carousel"
+        class="pillars-carousel flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="What we stand for"
+        tabindex="0"
+      >
+        {
+          slides.map((pillar, index) => (
+            <article
+              class="pillar-slide min-w-full shrink-0 snap-start border-t border-[var(--color-gold)]/40 pt-8"
+              aria-roledescription="slide"
+              aria-label={`${index + 1} of ${slides.length}`}
+              data-slide={index}
+            >
+              <p class="font-sans text-[0.75rem] tracking-[0.12em] text-[var(--color-ink-faint)]">
+                {String(index + 1).padStart(2, '0')}
+              </p>
+              <h3 class="mt-4 font-serif text-[clamp(1.375rem,2.5vw,1.75rem)] text-[var(--color-ink)]">
+                {pillar.title}
+              </h3>
+              <p class="mt-5 max-w-xl text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
+                {pillar.body}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-8 flex items-center justify-between gap-6 border-t hairline pt-6">
+        <div class="flex items-center gap-3" role="tablist" aria-label="Carousel slides">
+          {
+            slides.map((_, index) => (
+              <button
+                type="button"
+                class="pillar-dot h-px w-8 bg-[var(--color-line)] transition-all duration-300"
+                data-dot={index}
+                aria-label={`Go to slide ${index + 1}`}
+                aria-current={index === 0 ? 'true' : 'false'}
+              ></button>
+            ))
+          }
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button
+            type="button"
+            id="pillars-prev"
+            class="border hairline px-4 py-2 font-sans text-[0.6875rem] font-medium tracking-[0.1em] uppercase text-[var(--color-ink-muted)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-ink)] disabled:cursor-not-allowed disabled:opacity-40"
+            aria-label="Previous slide"
+          >
+            Prev
+          </button>
+          <button
+            type="button"
+            id="pillars-next"
+            class="border hairline px-4 py-2 font-sans text-[0.6875rem] font-medium tracking-[0.1em] uppercase text-[var(--color-ink-muted)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-ink)] disabled:cursor-not-allowed disabled:opacity-40"
+            aria-label="Next slide"
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
 
     <article class="grid overflow-hidden border hairline lg:grid-cols-[1.1fr_0.9fr]">
@@ -69,3 +127,80 @@ import { initiativesContent } from '../../data/initiatives';
     </article>
   </div>
 </section>
+
+<script>
+  const carousel = document.getElementById('pillars-carousel');
+  const prevButton = document.getElementById('pillars-prev');
+  const nextButton = document.getElementById('pillars-next');
+  const dots = document.querySelectorAll<HTMLButtonElement>('[data-dot]');
+  const slides = carousel?.querySelectorAll<HTMLElement>('[data-slide]');
+
+  if (carousel && prevButton && nextButton && slides?.length) {
+    let activeIndex = 0;
+
+    function getSlideWidth() {
+      const slide = slides[0];
+      if (!slide) return carousel.clientWidth;
+      const styles = getComputedStyle(carousel);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0');
+      return slide.offsetWidth + gap;
+    }
+
+    function updateControls() {
+      prevButton.disabled = activeIndex === 0;
+      nextButton.disabled = activeIndex === slides.length - 1;
+
+      dots.forEach((dot, index) => {
+        const isActive = index === activeIndex;
+        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+        dot.classList.toggle('bg-[var(--color-gold)]', isActive);
+        dot.classList.toggle('w-12', isActive);
+        dot.classList.toggle('bg-[var(--color-line)]', !isActive);
+        dot.classList.toggle('w-8', !isActive);
+      });
+    }
+
+    function goToSlide(index: number) {
+      activeIndex = Math.max(0, Math.min(index, slides.length - 1));
+      carousel.scrollTo({ left: activeIndex * getSlideWidth(), behavior: 'smooth' });
+      updateControls();
+    }
+
+    function syncFromScroll() {
+      const width = getSlideWidth();
+      if (!width) return;
+      activeIndex = Math.round(carousel.scrollLeft / width);
+      updateControls();
+    }
+
+    prevButton.addEventListener('click', () => goToSlide(activeIndex - 1));
+    nextButton.addEventListener('click', () => goToSlide(activeIndex + 1));
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = Number(dot.dataset.dot);
+        if (!Number.isNaN(index)) goToSlide(index);
+      });
+    });
+
+    carousel.addEventListener('scroll', () => {
+      window.requestAnimationFrame(syncFromScroll);
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      goToSlide(activeIndex);
+    });
+
+    updateControls();
+  }
+</script>
+
+<style>
+  .pillars-carousel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .pillars-carousel::-webkit-scrollbar {
+    display: none;
+  }
+</style>
