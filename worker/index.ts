@@ -98,9 +98,30 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
   return Response.json({ success: true });
 }
 
+async function handleConfig(env: Env): Promise<Response> {
+  const siteKey = env.TURNSTILE_SITE_KEY;
+  const isTestKey = siteKey === '1x00000000000000000000AA' || siteKey === '2x00000000000000000000AB';
+
+  if (!siteKey || isTestKey) {
+    return Response.json(
+      {
+        turnstileSiteKey: null,
+        error: 'Turnstile is not configured with a production site key.',
+      },
+      { status: 503 },
+    );
+  }
+
+  return Response.json({ turnstileSiteKey: siteKey });
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+
+    if (url.pathname === '/api/config' && request.method === 'GET') {
+      return handleConfig(env);
+    }
 
     if (url.pathname === '/api/contact') {
       if (request.method === 'POST') {

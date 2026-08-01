@@ -6,8 +6,8 @@
     "directory": "./dist"
   },
   "vars": {
-    "TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
-    "CONTACT_FROM": "no-reply@yourdomain.com",
+    "TURNSTILE_SITE_KEY": "REPLACE_WITH_PRODUCTION_TURNSTILE_SITE_KEY",
+    "CONTACT_FROM": "no-reply@apollotwelve.org",
     "CONTACT_TO": "your-inbox@yourdomain.com"
   }
 }

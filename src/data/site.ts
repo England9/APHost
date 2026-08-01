@@ -5,7 +5,6 @@ export const site = {
     'Apollo is the public-facing platform for Apollo Twelve LLC — a focused group of ventures across lifestyle, culture, and long-term brand development.',
   url: 'https://apollotwelve.org',
   ogImage: '/images/og-apollo.svg',
-  turnstileSiteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA',
   social: {
     linkedin: 'https://linkedin.com/company/apollo12',
     instagram: 'https://instagram.com/apollo12',

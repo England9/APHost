@@ -1,5 +1,5 @@
 ---
-import { inquiryOptions, site } from '../../data/site';
+import { inquiryOptions } from '../../data/site';
 import SectionLabel from '../ui/SectionLabel.astro';
 ---
 
@@ -15,7 +15,7 @@ import SectionLabel from '../ui/SectionLabel.astro';
           Inquiries
         </h2>
         <p class="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
-          For business inquiries, partnerships, press, organization-specific correspondence, or general questions, please use the secure form. Submissions are processed through Cloudflare and protected by Turnstile.
+          For business inquiries, partnerships, press, organization-specific correspondence, or general questions, please use the secure form below.
         </p>
 
         <ul class="mt-10 space-y-2 text-[0.8125rem] text-[var(--color-ink-faint)]">
@@ -98,7 +98,7 @@ import SectionLabel from '../ui/SectionLabel.astro';
           ></textarea>
         </div>
 
-        <div class="cf-turnstile" data-sitekey={site.turnstileSiteKey}></div>
+        <div id="turnstile-container" class="min-h-[65px]"></div>
 
         <p id="form-status" class="hidden text-[0.875rem]" role="status" aria-live="polite"></p>
 
@@ -118,12 +118,45 @@ import SectionLabel from '../ui/SectionLabel.astro';
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const status = document.getElementById('form-status');
   const submitButton = document.getElementById('contact-submit') as HTMLButtonElement | null;
+  const turnstileContainer = document.getElementById('turnstile-container');
+  let turnstileWidgetId: string | undefined;
 
   function setStatus(message: string, isError = false) {
     if (!status) return;
     status.textContent = message;
     status.classList.remove('hidden', 'text-[var(--color-gold)]', 'text-[var(--color-burgundy)]');
     status.classList.add(isError ? 'text-[var(--color-burgundy)]' : 'text-[var(--color-gold)]');
+  }
+
+  async function initTurnstile() {
+    try {
+      const response = await fetch('/api/config');
+      const config = (await response.json()) as { turnstileSiteKey?: string | null };
+
+      if (!response.ok || !config.turnstileSiteKey) {
+        setStatus('Contact form security is not configured yet. Please try again later.', true);
+        submitButton?.setAttribute('disabled', 'true');
+        return;
+      }
+
+      const render = () => {
+        if (!window.turnstile || !turnstileContainer) return;
+        turnstileWidgetId = window.turnstile.render(turnstileContainer, {
+          sitekey: config.turnstileSiteKey,
+          theme: 'dark',
+          appearance: 'interaction-only',
+        });
+      };
+
+      if (window.turnstile) {
+        render();
+      } else {
+        window.addEventListener('turnstile-loaded', render, { once: true });
+      }
+    } catch {
+      setStatus('Unable to load the contact form. Please refresh and try again.', true);
+      submitButton?.setAttribute('disabled', 'true');
+    }
   }
 
   form?.addEventListener('submit', async (event) => {
@@ -162,8 +195,8 @@ import SectionLabel from '../ui/SectionLabel.astro';
       }
 
       form.reset();
-      if (window.turnstile) {
-        window.turnstile.reset();
+      if (window.turnstile && turnstileWidgetId) {
+        window.turnstile.reset(turnstileWidgetId);
       }
       setStatus('Thank you. Your inquiry has been sent.');
     } catch (error) {
@@ -172,16 +205,26 @@ import SectionLabel from '../ui/SectionLabel.astro';
       submitButton.disabled = false;
     }
   });
+
+  initTurnstile();
 </script>
 
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
+
+<script is:inline>
+  window.onTurnstileLoad = function () {
+    window.dispatchEvent(new Event('turnstile-loaded'));
+  };
+</script>
 
 <script>
   declare global {
     interface Window {
       turnstile?: {
-        reset: () => void;
+        render: (container: HTMLElement, options: Record<string, string>) => string;
+        reset: (widgetId?: string) => void;
       };
+      onTurnstileLoad?: () => void;
     }
   }
 </script>
