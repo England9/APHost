@@ -11,6 +11,7 @@ export const site = {
   },
   parentCompany: 'Apollo Twelve LLC',
   commercialGroup: ['Vulcira', 'Golden Days'],
+  turnstileSiteKey: '0x4AAAAAAEDdw0x1UReVe9jG',
   founder: {
     name: 'England',
     displayName: '"England"',

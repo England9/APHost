@@ -13,8 +13,8 @@ const year = new Date().getFullYear();
         <Logo linked={false} />
         <div>
           <p class="label-caps mb-3">Commercial Group</p>
-          <p class="font-serif text-[1.125rem] text-[var(--color-ink)]">{site.parentCompany}</p>
-          <ul class="mt-4 space-y-2 text-[0.9375rem] text-[var(--color-ink-muted)]">
+          <ul class="space-y-2 text-[0.9375rem] text-[var(--color-ink-muted)]">
+            <li>{site.parentCompany}</li>
             {
               site.commercialGroup.map((name) => (
                 <li>{name}</li>

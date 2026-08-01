@@ -1,5 +1,5 @@
 ---
-import { inquiryOptions } from '../../data/site';
+import { inquiryOptions, site } from '../../data/site';
 import SectionLabel from '../ui/SectionLabel.astro';
 ---
 
@@ -98,7 +98,14 @@ import SectionLabel from '../ui/SectionLabel.astro';
           ></textarea>
         </div>
 
-        <div id="turnstile-container" class="min-h-[65px]"></div>
+        <div
+          class="cf-turnstile min-h-[65px]"
+          data-sitekey={site.turnstileSiteKey}
+          data-theme="dark"
+          data-callback="onTurnstileVerified"
+          data-expired-callback="onTurnstileExpired"
+          data-error-callback="onTurnstileError"
+        ></div>
 
         <p id="form-status" class="hidden text-[0.875rem]" role="status" aria-live="polite"></p>
 
@@ -114,18 +121,47 @@ import SectionLabel from '../ui/SectionLabel.astro';
   </div>
 </section>
 
+<script is:inline>
+  window.turnstileReady = false;
+
+  window.onTurnstileVerified = function () {
+    window.turnstileReady = true;
+    const submitButton = document.getElementById('contact-submit');
+    if (submitButton) submitButton.disabled = false;
+  };
+
+  window.onTurnstileExpired = function () {
+    window.turnstileReady = false;
+    const submitButton = document.getElementById('contact-submit');
+    if (submitButton) submitButton.disabled = true;
+    const status = document.getElementById('form-status');
+    if (status) {
+      status.textContent = 'Security verification expired. Please verify again.';
+      status.classList.remove('hidden');
+      status.classList.add('text-[var(--color-burgundy)]');
+    }
+  };
+
+  window.onTurnstileError = function () {
+    window.turnstileReady = false;
+    const submitButton = document.getElementById('contact-submit');
+    if (submitButton) submitButton.disabled = true;
+    const status = document.getElementById('form-status');
+    if (status) {
+      status.textContent =
+        'Security verification could not load. Check that apollotwelve.org is added to your Turnstile widget hostnames, then refresh.';
+      status.classList.remove('hidden');
+      status.classList.add('text-[var(--color-burgundy)]');
+    }
+  };
+</script>
+
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const status = document.getElementById('form-status');
   const submitButton = document.getElementById('contact-submit') as HTMLButtonElement | null;
-  const turnstileContainer = document.getElementById('turnstile-container');
-  let turnstileWidgetId: string | undefined;
-  let turnstileReady = false;
 
-  function setSubmitEnabled(enabled: boolean) {
-    if (!submitButton) return;
-    submitButton.disabled = !enabled;
-  }
+  if (submitButton) submitButton.disabled = true;
 
   function setStatus(message: string, isError = false) {
     if (!status) return;
@@ -134,54 +170,6 @@ import SectionLabel from '../ui/SectionLabel.astro';
     status.classList.add(isError ? 'text-[var(--color-burgundy)]' : 'text-[var(--color-gold)]');
   }
 
-  async function initTurnstile() {
-    try {
-      const response = await fetch('/api/config');
-      const config = (await response.json()) as { turnstileSiteKey?: string | null };
-
-      if (!response.ok || !config.turnstileSiteKey) {
-        setStatus('Contact form security is not configured yet. Please try again later.', true);
-        setSubmitEnabled(false);
-        return;
-      }
-
-      const render = () => {
-        if (!window.turnstile || !turnstileContainer) return;
-        setSubmitEnabled(false);
-        turnstileWidgetId = window.turnstile.render(turnstileContainer, {
-          sitekey: config.turnstileSiteKey!,
-          theme: 'dark',
-          callback: () => {
-            turnstileReady = true;
-            setSubmitEnabled(true);
-          },
-          'expired-callback': () => {
-            turnstileReady = false;
-            setSubmitEnabled(false);
-            setStatus('Security verification expired. Please verify again.', true);
-          },
-          'error-callback': () => {
-            turnstileReady = false;
-            setSubmitEnabled(false);
-            setStatus('Security verification failed to load. Please refresh and try again.', true);
-          },
-        });
-      };
-
-      if (window.turnstile) {
-        render();
-      } else {
-        window.addEventListener('turnstile-loaded', render, { once: true });
-      }
-    } catch {
-      setStatus('Unable to load the contact form. Please refresh and try again.', true);
-      setSubmitEnabled(false);
-    }
-  }
-
-  setSubmitEnabled(false);
-  initTurnstile();
-
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form || !submitButton) return;
@@ -189,12 +177,12 @@ import SectionLabel from '../ui/SectionLabel.astro';
     const formData = new FormData(form);
     const turnstileToken = (form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value;
 
-    if (!turnstileToken || !turnstileReady) {
+    if (!turnstileToken || !window.turnstileReady) {
       setStatus('Please complete the security verification below.', true);
       return;
     }
 
-    setSubmitEnabled(false);
+    submitButton.disabled = true;
     setStatus('Sending...');
 
     try {
@@ -218,35 +206,31 @@ import SectionLabel from '../ui/SectionLabel.astro';
       }
 
       form.reset();
-      turnstileReady = false;
-      if (window.turnstile && turnstileWidgetId) {
-        window.turnstile.reset(turnstileWidgetId);
+      window.turnstileReady = false;
+      if (window.turnstile) {
+        window.turnstile.reset();
       }
+      submitButton.disabled = true;
       setStatus('Thank you. Your inquiry has been sent.');
     } catch (error) {
       setStatus(error instanceof Error ? error.message : 'Unable to send your message.', true);
-    } finally {
-      setSubmitEnabled(turnstileReady);
+      submitButton.disabled = !window.turnstileReady;
     }
   });
 </script>
 
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
-
-<script is:inline>
-  window.onTurnstileLoad = function () {
-    window.dispatchEvent(new Event('turnstile-loaded'));
-  };
-</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <script>
   declare global {
     interface Window {
+      turnstileReady: boolean;
       turnstile?: {
-        render: (container: HTMLElement, options: Record<string, string>) => string;
         reset: (widgetId?: string) => void;
       };
-      onTurnstileLoad?: () => void;
+      onTurnstileVerified?: () => void;
+      onTurnstileExpired?: () => void;
+      onTurnstileError?: () => void;
     }
   }
 </script>
