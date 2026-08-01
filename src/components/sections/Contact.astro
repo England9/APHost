@@ -15,15 +15,7 @@ import SectionLabel from '../ui/SectionLabel.astro';
           Inquiries
         </h2>
         <p class="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
-          For business inquiries, partnerships, press, organization-specific correspondence, or general questions, please use the form or contact us directly.
-        </p>
-        <p class="mt-8">
-          <a
-            href={`mailto:${site.email}`}
-            class="link-underline font-sans text-[0.9375rem] text-[var(--color-ink)]"
-          >
-            {site.email}
-          </a>
+          For business inquiries, partnerships, press, organization-specific correspondence, or general questions, please use the secure form. Submissions are processed through Cloudflare and protected by Turnstile.
         </p>
 
         <ul class="mt-10 space-y-2 text-[0.8125rem] text-[var(--color-ink-faint)]">
@@ -32,14 +24,14 @@ import SectionLabel from '../ui/SectionLabel.astro';
           <li>Press</li>
           <li>Organization-specific inquiries</li>
           <li>General correspondence</li>
+          <li>Privacy and legal requests</li>
         </ul>
       </div>
 
       <form
+        id="contact-form"
         class="space-y-6 border hairline bg-[var(--color-canvas-raised)] p-8 md:p-10"
-        action={`mailto:${site.email}`}
-        method="post"
-        enctype="text/plain"
+        novalidate
       >
         <div class="grid gap-6 md:grid-cols-2">
           <div class="space-y-2">
@@ -106,9 +98,14 @@ import SectionLabel from '../ui/SectionLabel.astro';
           ></textarea>
         </div>
 
+        <div class="cf-turnstile" data-sitekey={site.turnstileSiteKey}></div>
+
+        <p id="form-status" class="hidden text-[0.875rem]" role="status" aria-live="polite"></p>
+
         <button
           type="submit"
-          class="border border-[var(--color-line)] px-7 py-3.5 font-sans text-[0.8125rem] font-medium tracking-[0.06em] uppercase text-[var(--color-ink)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+          id="contact-submit"
+          class="border border-[var(--color-line)] px-7 py-3.5 font-sans text-[0.8125rem] font-medium tracking-[0.04em] uppercase text-[var(--color-ink)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] disabled:cursor-not-allowed disabled:opacity-50"
         >
           Send Inquiry
         </button>
@@ -116,3 +113,75 @@ import SectionLabel from '../ui/SectionLabel.astro';
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  const submitButton = document.getElementById('contact-submit') as HTMLButtonElement | null;
+
+  function setStatus(message: string, isError = false) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove('hidden', 'text-[var(--color-gold)]', 'text-[var(--color-burgundy)]');
+    status.classList.add(isError ? 'text-[var(--color-burgundy)]' : 'text-[var(--color-gold)]');
+  }
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form || !submitButton) return;
+
+    const formData = new FormData(form);
+    const turnstileToken = (form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value;
+
+    if (!turnstileToken) {
+      setStatus('Please complete the security verification.', true);
+      return;
+    }
+
+    submitButton.disabled = true;
+    setStatus('Sending...');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          company: formData.get('company'),
+          interest: formData.get('interest'),
+          message: formData.get('message'),
+          turnstileToken,
+        }),
+      });
+
+      const result = (await response.json()) as { success?: boolean; error?: string };
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error ?? 'Unable to send your message.');
+      }
+
+      form.reset();
+      if (window.turnstile) {
+        window.turnstile.reset();
+      }
+      setStatus('Thank you. Your inquiry has been sent.');
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : 'Unable to send your message.', true);
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+</script>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<script>
+  declare global {
+    interface Window {
+      turnstile?: {
+        reset: () => void;
+      };
+    }
+  }
+</script>

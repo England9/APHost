@@ -1,23 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalDocument from '../components/legal/LegalDocument.astro';
+import { legalMeta } from '../data/legal/meta';
+import { privacySections } from '../data/legal/privacy';
 ---
 
 <BaseLayout
   title="Privacy Policy — Vulcira"
-  description="Privacy policy for Vulcira and associated organizations."
+  description="Privacy policy for the Vulcira website operated by Apollo Twelve LLC."
 >
   <section class="section-pad">
     <div class="content-wrap-narrow">
-      <p class="label-caps mb-6">Legal</p>
-      <h1 class="font-serif text-[clamp(2rem,4vw,3rem)] text-[var(--color-ink)]">Privacy Policy</h1>
-      <div class="mt-10 space-y-6 text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
-        <p>
-          This privacy policy will be published in full prior to launch. It will describe how Vulcira and associated organizations collect, use, and protect personal information submitted through this website.
-        </p>
-        <p>
-          For privacy-related inquiries, contact <a href="mailto:inquiries@vulcira.com" class="text-[var(--color-ink)] underline decoration-[var(--color-line)] underline-offset-4">inquiries@vulcira.com</a>.
-        </p>
-      </div>
+      <LegalDocument
+        title="Privacy Policy"
+        effectiveDate={legalMeta.effectiveDate}
+        sections={privacySections}
+        contactPath={legalMeta.contactPath}
+      />
     </div>
   </section>
 </BaseLayout>

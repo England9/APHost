@@ -1,0 +1,49 @@
+---
+import type { LegalSection } from '../../data/legal/meta';
+
+interface Props {
+  title: string;
+  effectiveDate: string;
+  sections: LegalSection[];
+  contactPath: string;
+}
+
+const { title, effectiveDate, sections, contactPath } = Astro.props;
+---
+
+<article class="legal-document">
+  <header class="mb-12 border-b hairline pb-10">
+    <p class="label-caps mb-6">Legal</p>
+    <h1 class="font-serif text-[clamp(2rem,4vw,3rem)] text-[var(--color-ink)]">{title}</h1>
+    <p class="mt-4 text-[0.875rem] text-[var(--color-ink-faint)]">Effective date: {effectiveDate}</p>
+  </header>
+
+  <div class="space-y-12">
+    {
+      sections.map((section) => (
+        <section id={section.id} class="scroll-mt-28">
+          <h2 class="font-serif text-[1.375rem] text-[var(--color-ink)]">{section.title}</h2>
+          <div class="mt-5 space-y-4 text-[0.9375rem] leading-[1.8] text-[var(--color-ink-muted)]">
+            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            {
+              section.list && (
+                <ul class="list-disc space-y-2 pl-5">
+                  {section.list.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              )
+            }
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <p class="mt-16 border-t hairline pt-8 text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
+    For questions regarding this document, please use our
+    <a href={contactPath} class="text-[var(--color-ink)] underline decoration-[var(--color-line)] underline-offset-4">
+      contact form
+    </a>.
+  </p>
+</article>

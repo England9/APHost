@@ -1,23 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalDocument from '../components/legal/LegalDocument.astro';
+import { legalMeta } from '../data/legal/meta';
+import { termsSections } from '../data/legal/terms';
 ---
 
 <BaseLayout
-  title="Terms — Vulcira"
-  description="Terms of use for the Vulcira website."
+  title="Terms of Use — Vulcira"
+  description="Terms of use for the Vulcira website operated by Apollo Twelve LLC."
 >
   <section class="section-pad">
     <div class="content-wrap-narrow">
-      <p class="label-caps mb-6">Legal</p>
-      <h1 class="font-serif text-[clamp(2rem,4vw,3rem)] text-[var(--color-ink)]">Terms of Use</h1>
-      <div class="mt-10 space-y-6 text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
-        <p>
-          These terms of use will be published in full prior to launch. They will govern access to and use of this website and its content.
-        </p>
-        <p>
-          For questions regarding these terms, contact <a href="mailto:inquiries@vulcira.com" class="text-[var(--color-ink)] underline decoration-[var(--color-line)] underline-offset-4">inquiries@vulcira.com</a>.
-        </p>
-      </div>
+      <LegalDocument
+        title="Terms of Use"
+        effectiveDate={legalMeta.effectiveDate}
+        sections={termsSections}
+        contactPath={legalMeta.contactPath}
+      />
     </div>
   </section>
 </BaseLayout>

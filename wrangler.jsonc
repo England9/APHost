@@ -1,7 +1,13 @@
 {
   "name": "aphost",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-01-01",
   "assets": {
     "directory": "./dist"
+  },
+  "vars": {
+    "TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
+    "CONTACT_FROM": "no-reply@yourdomain.com",
+    "CONTACT_TO": "your-inbox@yourdomain.com"
   }
 }
