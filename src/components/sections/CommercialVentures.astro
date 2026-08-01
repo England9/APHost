@@ -1,65 +1,54 @@
 ---
 import { getHomepageVentures } from '../../data/organizations';
-import SectionLabel from '../ui/SectionLabel.astro';
 import VentureCard from '../ui/VentureCard.astro';
 
 const ventures = getHomepageVentures();
 const [vulcira, goldenDays, chainReaction] = ventures;
+
+const ventureMeta = [
+  { org: vulcira, index: '01', eyebrow: 'Lifestyle Brand' },
+  { org: goldenDays, index: '02', eyebrow: 'Nostalgia & Culture' },
+  { org: chainReaction, index: '03', eyebrow: 'Nonprofit Initiative', id: 'initiatives' },
+];
 ---
 
-<section id="ventures" class="section-pad" aria-labelledby="ventures-heading">
-  <div class="content-wrap-wide space-y-16 md:space-y-20">
-    <div class="max-w-2xl">
-      <SectionLabel label="Our Ventures" />
-      <h2
-        id="ventures-heading"
-        class="mt-6 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.12] text-[var(--color-ink)]"
+<section id="ventures" class="section-pad border-t hairline" aria-labelledby="ventures-heading">
+  <div class="content-wrap-wide space-y-14 md:space-y-16">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <p class="label-caps">Our Ventures</p>
+        <h2
+          id="ventures-heading"
+          class="mt-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-[1.12] text-[var(--color-ink)]"
+        >
+          Three distinct ventures. One shared standard.
+        </h2>
+      </div>
+      <a
+        href="#ventures"
+        class="inline-flex shrink-0 items-center gap-2 self-start font-sans text-[0.6875rem] font-medium tracking-[0.1em] uppercase text-[var(--color-ink-muted)] transition-colors hover:text-[var(--color-ink)] lg:self-auto"
       >
-        Three distinct directions. One shared standard.
-      </h2>
-      <p class="mt-6 text-[1.0625rem] leading-relaxed text-[var(--color-ink-muted)]">
-        From lifestyle and culture to nostalgic experiences to generous nonprofit work — each venture is developed with intention and its own voice.
-      </p>
+        View All Ventures
+        <span aria-hidden="true">→</span>
+      </a>
     </div>
 
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
       {
-        vulcira && (
-          <VentureCard
-            eyebrow="Lifestyle Brand"
-            name={vulcira.name}
-            description={vulcira.shortDescription}
-            href={vulcira.pagePath}
-            actionLabel={vulcira.actionLabel}
-            image={vulcira.image}
-            imageAlt={vulcira.imageAlt}
-          />
-        )
-      }
-      {
-        goldenDays && (
-          <VentureCard
-            eyebrow="Nostalgia & Youth"
-            name={goldenDays.name}
-            description={goldenDays.shortDescription}
-            href={goldenDays.pagePath}
-            actionLabel={goldenDays.actionLabel}
-            image={goldenDays.image}
-            imageAlt={goldenDays.imageAlt}
-          />
-        )
-      }
-      {
-        chainReaction && (
-          <VentureCard
-            eyebrow="Nonprofit"
-            name={chainReaction.name}
-            description={chainReaction.shortDescription}
-            href={chainReaction.pagePath}
-            actionLabel={chainReaction.actionLabel}
-            image={chainReaction.image}
-            imageAlt={chainReaction.imageAlt}
-          />
+        ventureMeta.map(({ org, index, eyebrow, id }) =>
+          org ? (
+            <VentureCard
+              id={id}
+              index={index}
+              eyebrow={eyebrow}
+              name={org.name}
+              description={org.shortDescription}
+              href={org.pagePath}
+              actionLabel={org.actionLabel}
+              image={org.image}
+              imageAlt={org.imageAlt}
+            />
+          ) : null,
         )
       }
     </div>

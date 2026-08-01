@@ -34,7 +34,7 @@ export const organizations: Organization[] = [
   },
   {
     id: 'golden-days',
-    name: 'Golden Days',
+    name: 'Golden Days LLC',
     category: 'commercial',
     shortDescription:
       'A venture devoted to bringing the nostalgia and feeling of youth into thoughtful modern-day products and experiences.',
@@ -43,7 +43,7 @@ export const organizations: Organization[] = [
     websiteUrl: null,
     image: '/images/ventures/golden-days.jpg',
     imageAlt: 'Golden sunset over a beach',
-    actionLabel: 'View Golden Days',
+    actionLabel: 'Explore Golden Days',
     pagePath: '/ventures/golden-days',
     displayOrder: 2,
     active: true,
@@ -59,7 +59,7 @@ export const organizations: Organization[] = [
     websiteUrl: null,
     image: '/images/ventures/chain-reaction.jpg',
     imageAlt: 'Hand reaching toward warm light',
-    actionLabel: 'Visit The Chain Reaction Project',
+    actionLabel: 'Explore the Chain Reaction Project',
     pagePath: '/ventures/chain-reaction-project',
     displayOrder: 3,
     active: true,

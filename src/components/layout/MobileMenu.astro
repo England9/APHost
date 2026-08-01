@@ -5,7 +5,7 @@ import { ventureNavLinks } from '../../data/venture-pages';
 
 <button
   type="button"
-  class="relative z-[60] flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
+  class="relative z-[60] flex h-10 w-10 flex-col items-center justify-center gap-[5px] lg:hidden"
   aria-expanded="false"
   aria-controls="mobile-menu"
   aria-label="Open menu"
@@ -17,17 +17,17 @@ import { ventureNavLinks } from '../../data/venture-pages';
 
 <div
   id="mobile-menu"
-  class="fixed inset-0 z-[55] flex translate-x-full flex-col bg-[var(--color-canvas)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden"
+  class="fixed inset-0 z-[55] flex translate-x-full flex-col bg-[var(--color-canvas)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden"
   data-menu-panel
   hidden
 >
   <div class="flex flex-1 flex-col justify-between overflow-y-auto px-[var(--spacing-content)] pb-12 pt-28">
-    <nav class="flex flex-col gap-8" aria-label="Mobile">
+    <nav class="flex flex-col gap-6" aria-label="Mobile">
       {
         navigation.map((item) => (
           <a
             href={item.href}
-            class="font-serif text-[2.5rem] leading-none tracking-[-0.02em] text-[var(--color-ink)]"
+            class="font-sans text-[0.875rem] font-medium tracking-[0.1em] uppercase text-[var(--color-ink)]"
             data-menu-link
           >
             {item.label}
@@ -41,7 +41,7 @@ import { ventureNavLinks } from '../../data/venture-pages';
           ventureNavLinks.map((link) => (
             <a
               href={link.href}
-              class="block font-serif text-[1.75rem] leading-none tracking-[-0.02em] text-[var(--color-ink-muted)]"
+              class="block font-serif text-[1.5rem] leading-none text-[var(--color-ink-muted)]"
               data-menu-link
             >
               {link.label}
@@ -50,7 +50,7 @@ import { ventureNavLinks } from '../../data/venture-pages';
         }
       </div>
     </nav>
-    <p class="label-caps">Apollo</p>
+    <p class="font-serif text-[0.8125rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)]">Apollo Twelve</p>
   </div>
 </div>
 

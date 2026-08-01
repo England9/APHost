@@ -1,8 +1,9 @@
 export const site = {
   name: 'Apollo',
-  title: 'Apollo — Lifestyle, Ventures, and Long-Term Initiatives',
+  wordmark: 'Apollo Twelve',
+  title: 'Apollo Twelve — Lifestyle, Ventures, and Long-Term Initiatives',
   description:
-    'Apollo is the public-facing platform for Apollo Twelve LLC — a focused group of ventures across lifestyle, culture, and long-term brand development.',
+    'Apollo Twelve is the public-facing platform for Apollo Twelve LLC — a focused group of ventures across lifestyle, culture, and long-term brand development.',
   url: 'https://apollotwelve.org',
   ogImage: '/images/og-apollo.svg',
   social: {
@@ -10,7 +11,10 @@ export const site = {
     instagram: 'https://instagram.com/apollo12',
   },
   parentCompany: 'Apollo Twelve LLC',
-  commercialGroup: ['Vulcira', 'Golden Days'],
+  commercialGroup: ['Vulcira', 'Golden Days LLC'],
+  initiative: 'The Chain Reaction Project',
+  footerDescription:
+    'Apollo Twelve LLC is the parent entity. Each venture and initiative operates with its own identity, purpose, and creative direction.',
   turnstileSiteKey: '0x4AAAAAAEDdw0x1UReVe9jG',
   founder: {
     name: 'England',
@@ -21,6 +25,8 @@ export const site = {
 
 export const navigation = [
   { label: 'About', href: '/#about' },
+  { label: 'Ventures', href: '/#ventures' },
+  { label: 'Initiatives', href: '/#initiatives' },
   { label: 'Contact', href: '/#contact' },
 ] as const;
 

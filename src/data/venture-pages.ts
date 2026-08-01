@@ -42,7 +42,7 @@ export const venturePages: VenturePage[] = [
   },
   {
     slug: 'golden-days',
-    name: 'Golden Days',
+    name: 'Golden Days LLC',
     eyebrow: 'Nostalgia & Youth',
     title: 'Bringing the feeling of youth to the modern day.',
     intro:

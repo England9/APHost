@@ -1,30 +1,28 @@
 ---
-import { site, navigation } from '../../data/site';
-import { ventureNavLinks } from '../../data/venture-pages';
+import { navigation } from '../../data/site';
 import Logo from '../ui/Logo.astro';
 import MobileMenu from './MobileMenu.astro';
-import VenturesDropdown from './VenturesDropdown.astro';
 ---
 
 <header
   class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color] duration-300"
   data-header
 >
-  <div class="content-wrap flex items-center justify-between gap-8 px-[var(--spacing-content)] py-5 md:py-6">
+  <div class="content-wrap-wide flex items-center justify-between gap-8 px-[var(--spacing-content)] py-5 md:py-6">
     <Logo />
 
-    <nav class="hidden items-center gap-10 md:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-10 lg:flex" aria-label="Primary">
       {
         navigation.map((item) => (
           <a
             href={item.href}
-            class="link-underline font-sans text-[0.8125rem] font-medium tracking-[0.04em] uppercase text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
+            class="font-sans text-[0.75rem] font-medium tracking-[0.1em] uppercase text-[var(--color-ink-muted)] transition-colors hover:text-[var(--color-ink)]"
+            data-nav-link={item.label.toLowerCase()}
           >
             {item.label}
           </a>
         ))
       }
-      <VenturesDropdown />
     </nav>
 
     <MobileMenu />
@@ -38,10 +36,25 @@ import VenturesDropdown from './VenturesDropdown.astro';
     if (!header) return;
     const scrolled = window.scrollY > 24;
     header.classList.toggle('border-[var(--color-line)]', scrolled);
-    header.classList.toggle('bg-[color-mix(in_srgb,var(--color-canvas)_88%,transparent)]', scrolled);
+    header.classList.toggle('bg-[color-mix(in_srgb,var(--color-canvas)_92%,transparent)]', scrolled);
     header.classList.toggle('backdrop-blur-sm', scrolled);
   }
 
+  function setActiveNav() {
+    const links = document.querySelectorAll('[data-nav-link]');
+    const hash = window.location.hash || '#about';
+    links.forEach((link) => {
+      const href = link.getAttribute('href') ?? '';
+      const isActive = href === hash || (hash === '' && href === '/#about');
+      link.classList.toggle('text-[var(--color-ink)]', isActive);
+      link.classList.toggle('border-b', isActive);
+      link.classList.toggle('border-[var(--color-ink)]', isActive);
+      link.classList.toggle('pb-0.5', isActive);
+    });
+  }
+
   updateHeader();
+  setActiveNav();
   window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('hashchange', setActiveNav);
 </script>

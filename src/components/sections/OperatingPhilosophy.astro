@@ -1,18 +1,25 @@
 ---
-import SectionLabel from '../ui/SectionLabel.astro';
 ---
 
 <section class="section-pad border-t hairline" aria-labelledby="philosophy-heading">
-  <div class="content-wrap-narrow text-center">
-    <SectionLabel label="Operating Philosophy" class="mb-8" />
-    <h2
-      id="philosophy-heading"
-      class="font-serif text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] tracking-[-0.02em] text-[var(--color-ink)]"
-    >
-      Built with Long-Term Intent.
-    </h2>
-    <p class="mx-auto mt-10 max-w-2xl text-[1.0625rem] leading-[1.8] text-[var(--color-ink-muted)] md:text-[1.125rem]">
-      The organizations connected through Apollo are developed with a long-term perspective. Each venture is approached as an independent identity, supported by disciplined planning, thoughtful design, and a commitment to durable value.
-    </p>
+  <div class="content-wrap-wide">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-20">
+      <div class="flex gap-6">
+        <div class="mt-1 h-auto w-px shrink-0 self-stretch bg-[var(--color-gold)]" aria-hidden="true"></div>
+        <div>
+          <p class="label-caps">Our Philosophy</p>
+          <h2
+            id="philosophy-heading"
+            class="mt-4 max-w-md font-serif text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] text-[var(--color-ink)]"
+          >
+            Built with long-term intent. Designed for lasting impact.
+          </h2>
+        </div>
+      </div>
+
+      <p class="max-w-lg text-[0.9375rem] leading-[1.8] text-[var(--color-ink-muted)] lg:pt-8">
+        The organizations connected through Apollo Twelve are developed with a long-term perspective. Each venture is approached as an independent identity, supported by disciplined planning, thoughtful design, and a commitment to durable value.
+      </p>
+    </div>
   </div>
 </section>

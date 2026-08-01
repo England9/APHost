@@ -2,10 +2,18 @@
 interface Props {
   class?: string;
   showWordmark?: boolean;
+  showMark?: boolean;
   linked?: boolean;
+  variant?: 'default' | 'footer';
 }
 
-const { class: className = '', showWordmark = true, linked = true } = Astro.props;
+const {
+  class: className = '',
+  showWordmark = true,
+  showMark = false,
+  linked = true,
+  variant = 'default',
+} = Astro.props;
 
 const Tag = linked ? 'a' : 'div';
 const tagProps = linked ? { href: '/' } : {};
@@ -14,25 +22,38 @@ const tagProps = linked ? { href: '/' } : {};
 <Tag
   {...tagProps}
   class:list={['inline-flex items-center gap-3 text-[var(--color-ink)]', className]}
-  aria-label={linked ? 'Apollo home' : undefined}
+  aria-label={linked ? 'Apollo Twelve home' : undefined}
 >
-  <svg
-    class="h-8 w-8 shrink-0 md:h-9 md:w-9"
-    viewBox="0 0 48 48"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path
-      d="M24 5 L39.5 41 M24 5 L8.5 41"
-      stroke="currentColor"
-      stroke-width="2.25"
-      stroke-linecap="square"
-    ></path>
-  </svg>
+  {
+    showMark && (
+      <svg
+        class="h-8 w-8 shrink-0 md:h-9 md:w-9"
+        viewBox="0 0 48 48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M24 5 L39.5 41 M24 5 L8.5 41"
+          stroke="currentColor"
+          stroke-width="2.25"
+          stroke-linecap="square"
+        ></path>
+      </svg>
+    )
+  }
   {
     showWordmark && (
-      <span class="font-serif text-[1.375rem] tracking-[0.06em] md:text-[1.5rem]">Apollo</span>
+      <span
+        class:list={[
+          'font-serif uppercase tracking-[0.14em]',
+          variant === 'footer'
+            ? 'text-[1.125rem]'
+            : 'text-[0.9375rem] md:text-[1rem]',
+        ]}
+      >
+        Apollo Twelve
+      </span>
     )
   }
 </Tag>

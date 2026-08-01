@@ -1,5 +1,6 @@
 ---
 interface Props {
+  index: string;
   eyebrow: string;
   name: string;
   description: string;
@@ -7,35 +8,44 @@ interface Props {
   actionLabel: string;
   image: string;
   imageAlt: string;
+  id?: string;
 }
 
-const { eyebrow, name, description, href, actionLabel, image, imageAlt } = Astro.props;
+const { index, eyebrow, name, description, href, actionLabel, image, imageAlt, id } = Astro.props;
 ---
 
-<article class="relative overflow-hidden border hairline">
+<article id={id} class="group relative overflow-hidden border hairline bg-[var(--color-canvas-raised)]">
   <div class="aspect-[3/4] overflow-hidden">
     <img
       src={image}
       alt={imageAlt}
-      class="h-full w-full object-cover"
+      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
       loading="lazy"
       width="900"
       height="1200"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-canvas)] via-[color-mix(in_srgb,var(--color-canvas)_25%,transparent)] to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#000000] via-[color-mix(in_srgb,#000000_55%,transparent)] to-transparent"></div>
   </div>
-  <div class="absolute inset-x-0 bottom-0 p-8 md:p-10">
-    <p class="label-caps mb-3 text-[var(--color-ink)]/80">{eyebrow}</p>
-    <h3 class="font-serif text-[2rem] text-[var(--color-ink)]">{name}</h3>
-    <p class="mt-4 max-w-sm text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
+
+  <div class="absolute inset-x-0 top-0 p-6 md:p-8">
+    <span class="font-sans text-[0.8125rem] tracking-[0.08em] text-[var(--color-ink-faint)]">{index}</span>
+  </div>
+
+  <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
+    <p class="mb-3 font-sans text-[0.6875rem] font-semibold tracking-[0.12em] uppercase text-[var(--color-gold)]">
+      {eyebrow}
+    </p>
+    <h3 class="font-serif text-[clamp(1.5rem,3vw,2rem)] leading-[1.1] text-[var(--color-ink)]">{name}</h3>
+    <p class="mt-3 max-w-xs text-[0.875rem] leading-relaxed text-[var(--color-ink-muted)]">
       {description}
     </p>
-    <div class="mt-6">
+    <div class="mt-5">
       <a
         href={href}
-        class="inline-block border-b border-[var(--color-ink-muted)] pb-1 font-sans text-[0.8125rem] font-medium tracking-[0.04em] uppercase text-[var(--color-ink-muted)] transition-colors hover:border-[var(--color-ink)] hover:text-[var(--color-ink)]"
+        class="inline-flex items-center gap-2 font-sans text-[0.6875rem] font-medium tracking-[0.1em] uppercase text-[var(--color-ink-muted)] transition-colors hover:text-[var(--color-ink)]"
       >
         {actionLabel}
+        <span aria-hidden="true">→</span>
       </a>
     </div>
   </div>
