@@ -120,6 +120,12 @@ import SectionLabel from '../ui/SectionLabel.astro';
   const submitButton = document.getElementById('contact-submit') as HTMLButtonElement | null;
   const turnstileContainer = document.getElementById('turnstile-container');
   let turnstileWidgetId: string | undefined;
+  let turnstileReady = false;
+
+  function setSubmitEnabled(enabled: boolean) {
+    if (!submitButton) return;
+    submitButton.disabled = !enabled;
+  }
 
   function setStatus(message: string, isError = false) {
     if (!status) return;
@@ -135,16 +141,30 @@ import SectionLabel from '../ui/SectionLabel.astro';
 
       if (!response.ok || !config.turnstileSiteKey) {
         setStatus('Contact form security is not configured yet. Please try again later.', true);
-        submitButton?.setAttribute('disabled', 'true');
+        setSubmitEnabled(false);
         return;
       }
 
       const render = () => {
         if (!window.turnstile || !turnstileContainer) return;
+        setSubmitEnabled(false);
         turnstileWidgetId = window.turnstile.render(turnstileContainer, {
-          sitekey: config.turnstileSiteKey,
+          sitekey: config.turnstileSiteKey!,
           theme: 'dark',
-          appearance: 'interaction-only',
+          callback: () => {
+            turnstileReady = true;
+            setSubmitEnabled(true);
+          },
+          'expired-callback': () => {
+            turnstileReady = false;
+            setSubmitEnabled(false);
+            setStatus('Security verification expired. Please verify again.', true);
+          },
+          'error-callback': () => {
+            turnstileReady = false;
+            setSubmitEnabled(false);
+            setStatus('Security verification failed to load. Please refresh and try again.', true);
+          },
         });
       };
 
@@ -155,9 +175,12 @@ import SectionLabel from '../ui/SectionLabel.astro';
       }
     } catch {
       setStatus('Unable to load the contact form. Please refresh and try again.', true);
-      submitButton?.setAttribute('disabled', 'true');
+      setSubmitEnabled(false);
     }
   }
+
+  setSubmitEnabled(false);
+  initTurnstile();
 
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -166,12 +189,12 @@ import SectionLabel from '../ui/SectionLabel.astro';
     const formData = new FormData(form);
     const turnstileToken = (form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value;
 
-    if (!turnstileToken) {
-      setStatus('Please complete the security verification.', true);
+    if (!turnstileToken || !turnstileReady) {
+      setStatus('Please complete the security verification below.', true);
       return;
     }
 
-    submitButton.disabled = true;
+    setSubmitEnabled(false);
     setStatus('Sending...');
 
     try {
@@ -195,6 +218,7 @@ import SectionLabel from '../ui/SectionLabel.astro';
       }
 
       form.reset();
+      turnstileReady = false;
       if (window.turnstile && turnstileWidgetId) {
         window.turnstile.reset(turnstileWidgetId);
       }
@@ -202,11 +226,9 @@ import SectionLabel from '../ui/SectionLabel.astro';
     } catch (error) {
       setStatus(error instanceof Error ? error.message : 'Unable to send your message.', true);
     } finally {
-      submitButton.disabled = false;
+      setSubmitEnabled(turnstileReady);
     }
   });
-
-  initTurnstile();
 </script>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
