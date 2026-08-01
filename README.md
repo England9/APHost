@@ -31,6 +31,8 @@ npm run deploy
 
 The contact form posts to `/api/contact` and is handled by the Cloudflare Worker in `worker/index.ts`.
 
+Messages are delivered **for free** via Mailchannels — no paid Cloudflare Email plan. Submissions are sent to whatever address you set in `CONTACT_TO` (Gmail, Outlook, etc.).
+
 1. Create a [Turnstile](https://developers.cloudflare.com/turnstile/) widget for your domain.
 2. Set Worker secrets:
 
@@ -40,8 +42,9 @@ npx wrangler secret put CONTACT_TO
 ```
 
 3. Update `CONTACT_FROM` and `TURNSTILE_SITE_KEY` in `wrangler.jsonc`.
+4. Add the `_mailchannels` DNS TXT record (see `.env.example`).
 
-See `.env.example` for local development notes.
+See `.env.example` for full setup instructions including DNS records.
 
 ## Project structure
 
