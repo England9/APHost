@@ -12,18 +12,21 @@ const { venture } = Astro.props;
 ---
 
 <BaseLayout
-  title={`${venture.name} — Apollo`}
+  title={`${venture.name} — Apollo Twelve`}
   description={venture.intro}
 >
   <article>
-    <section class="border-b hairline pt-32 md:pt-40">
+    <section class="border-b hairline pt-28 md:pt-36">
       <div class="content-wrap-wide section-pad !pt-0">
-        <div class="grid items-end gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+        <div class="grid items-end gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
           <div class="max-w-2xl">
             <SectionLabel label={venture.eyebrow} />
-            <h1 class="mt-6 font-serif text-[clamp(2.5rem,5vw,4.25rem)] leading-[1.02] tracking-[-0.03em] text-[var(--color-ink)]">
+            <h1 class="mt-6 font-serif text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[1.02] tracking-[-0.03em] text-[var(--color-ink)]">
               {venture.title}
             </h1>
+            <p class="mt-4 font-serif text-[clamp(1.125rem,2.5vw,1.375rem)] italic text-[var(--color-gold)]">
+              {venture.tagline}
+            </p>
             <p class="mt-8 text-[1.0625rem] leading-[1.8] text-[var(--color-ink-muted)] md:text-[1.125rem]">
               {venture.intro}
             </p>
@@ -48,25 +51,96 @@ const { venture } = Astro.props;
       </div>
     </section>
 
+    <section class="section-pad border-b hairline bg-[var(--color-canvas-raised)]">
+      <div class="content-wrap-wide">
+        <p class="label-caps">What we do</p>
+        <div class="mt-10 grid gap-8 md:grid-cols-3 md:gap-10">
+          {
+            venture.focusAreas.map((area) => (
+              <div class="border-t border-[var(--color-gold)]/40 pt-6">
+                <h2 class="font-serif text-[clamp(1.25rem,2.5vw,1.5rem)] text-[var(--color-ink)]">{area.title}</h2>
+                <p class="mt-4 text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">{area.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
     <section class="section-pad">
-      <div class="content-wrap-wide space-y-20">
+      <div class="content-wrap-wide space-y-24 md:space-y-28">
         {
           venture.sections.map((section, index) => (
             <div
               class:list={[
-                'grid gap-8 border-t hairline pt-12 lg:grid-cols-[0.35fr_0.65fr] lg:gap-16 lg:pt-16',
-                index % 2 === 1 && 'lg:[&>div:first-child]:order-2 lg:[&>div:last-child]:order-1',
+                'grid gap-10 border-t hairline pt-12 lg:grid-cols-2 lg:items-center lg:gap-16 lg:pt-16',
+                section.image && index % 2 === 1 && 'lg:[&>figure]:order-2',
               ]}
             >
               <div>
                 <h2 class="font-serif text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.1] text-[var(--color-ink)]">
                   {section.heading}
                 </h2>
+                <p class="mt-6 text-[1.0625rem] leading-[1.8] text-[var(--color-ink-muted)]">{section.body}</p>
               </div>
-              <p class="text-[1.0625rem] leading-[1.8] text-[var(--color-ink-muted)]">{section.body}</p>
+              {
+                section.image ? (
+                  <figure class="overflow-hidden border hairline">
+                    <img
+                      src={section.image}
+                      alt={section.imageAlt ?? ''}
+                      class="aspect-[16/10] w-full object-cover"
+                      loading="lazy"
+                      width="1200"
+                      height="750"
+                    />
+                  </figure>
+                ) : null
+              }
             </div>
           ))
         }
+      </div>
+    </section>
+
+    {
+      venture.gallery.length > 0 ? (
+        <section class="section-pad border-t hairline bg-[var(--color-canvas-raised)]">
+          <div class="content-wrap-wide">
+            <p class="label-caps">Gallery</p>
+            <div class="mt-10 grid gap-6 md:grid-cols-2">
+              {venture.gallery.map((item) => (
+                <figure class="overflow-hidden border hairline">
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    class="aspect-[16/10] w-full object-cover"
+                    loading="lazy"
+                    width="1200"
+                    height="750"
+                  />
+                  {item.caption ? (
+                    <figcaption class="border-t hairline px-5 py-4 font-sans text-[0.75rem] tracking-[0.08em] uppercase text-[var(--color-ink-faint)]">
+                      {item.caption}
+                    </figcaption>
+                  ) : null}
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null
+    }
+
+    <section class="section-pad border-t hairline">
+      <div class="content-wrap-wide">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="font-serif text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--color-ink)]">{venture.cta.heading}</h2>
+          <p class="mt-6 text-[1.0625rem] leading-[1.8] text-[var(--color-ink-muted)]">{venture.cta.body}</p>
+          <div class="mt-10 flex justify-center">
+            <Button href="/#contact" variant="primary">Contact Apollo Twelve</Button>
+          </div>
+        </div>
       </div>
     </section>
   </article>

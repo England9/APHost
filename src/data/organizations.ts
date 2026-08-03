@@ -1,4 +1,4 @@
-export type OrganizationCategory = 'commercial' | 'nonprofit' | 'platform';
+export type OrganizationCategory = 'commercial' | 'nonprofit' | 'platform' | 'consulting';
 
 export interface Organization {
   id: string;
@@ -21,12 +21,12 @@ export const organizations: Organization[] = [
     name: 'Vulcira',
     category: 'platform',
     shortDescription:
-      'A lifestyle brand devoted to considered living — products, experiences, and identity shaped by culture and everyday life.',
+      'A lifestyle brand spanning cosmetics, fashion, and culture — developed with restraint, quality, and a long-term view.',
     fullDescription:
-      'Vulcira develops lifestyle offerings with a long-term perspective: restrained in tone, consistent in quality, and grounded in how people actually live.',
+      'Vulcira develops cosmetics, apparel, and experiences for people who care about how things feel, look, and last.',
     websiteUrl: null,
     image: '/images/ventures/vulcira.jpg',
-    imageAlt: 'Lifestyle brand editorial photograph',
+    imageAlt: 'Vulcira lifestyle brand editorial photograph',
     actionLabel: 'Explore Vulcira',
     pagePath: '/ventures/vulcira',
     displayOrder: 1,
@@ -37,15 +37,31 @@ export const organizations: Organization[] = [
     name: 'Golden Days LLC',
     category: 'commercial',
     shortDescription:
-      'A venture devoted to bringing the nostalgia and feeling of youth into thoughtful modern-day products and experiences.',
+      'Vintage nostalgia and fashion for the modern day — warmth, optimism, and the feeling of youth made wearable.',
     fullDescription:
-      'Golden Days develops work rooted in warmth, optimism, and the emotional texture of earlier chapters — made relevant for today.',
+      'Golden Days translates nostalgic sensibility into vintage-inspired fashion, curated goods, and experiences built with honesty and craft.',
     websiteUrl: null,
     image: '/images/ventures/golden-days.jpg',
-    imageAlt: 'Golden sunset over a beach',
+    imageAlt: 'Golden Days vintage nostalgia fashion',
     actionLabel: 'Explore Golden Days',
     pagePath: '/ventures/golden-days',
     displayOrder: 2,
+    active: true,
+  },
+  {
+    id: 'apollo-twelve-consulting',
+    name: 'Apollo Twelve Consulting',
+    category: 'consulting',
+    shortDescription:
+      'Strategic advisory for founders and brands — brand strategy, venture guidance, and operational support built to last.',
+    fullDescription:
+      'Apollo Twelve Consulting helps clients navigate growth, positioning, and the decisions that shape durable companies.',
+    websiteUrl: null,
+    image: '/images/ventures/apollo-consulting.jpg',
+    imageAlt: 'Apollo Twelve consulting strategy session',
+    actionLabel: 'Explore Consulting',
+    pagePath: '/ventures/apollo-twelve-consulting',
+    displayOrder: 3,
     active: true,
   },
   {
@@ -53,15 +69,15 @@ export const organizations: Organization[] = [
     name: 'The Chain Reaction Project',
     category: 'nonprofit',
     shortDescription:
-      'A nonprofit initiative focused on generous, mission-driven work and lasting public benefit.',
+      'A nonprofit raising money for schools, sports equipment, arts programs, and community causes that need support.',
     fullDescription:
-      'The Chain Reaction Project supports programs and partnerships that create meaningful community impact through accountable, thoughtful action.',
+      'The Chain Reaction Project organizes fundraising campaigns and partnerships that create lasting public benefit through accountable, thoughtful action.',
     websiteUrl: null,
     image: '/images/ventures/chain-reaction.jpg',
-    imageAlt: 'Hand reaching toward warm light',
+    imageAlt: 'Community impact and hope',
     actionLabel: 'Explore the Chain Reaction Project',
     pagePath: '/ventures/chain-reaction-project',
-    displayOrder: 3,
+    displayOrder: 4,
     active: true,
   },
 ];

@@ -24,7 +24,7 @@ export const initiativesContent = {
       'A mission-driven initiative focused on community impact, generous action, and programs that create lasting public benefit — developed with the same long-term discipline applied across Apollo Twelve.',
     href: '/ventures/chain-reaction-project',
     actionLabel: 'Explore the Chain Reaction Project',
-    image: '/images/ventures/chain-reaction.jpg',
-    imageAlt: 'Warm light symbolizing hope and community impact',
+    image: '/images/ventures/chain-reaction-impact.jpg',
+    imageAlt: 'School equipment and community fundraising supplies',
   },
 } as const;

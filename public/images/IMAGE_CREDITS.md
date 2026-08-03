@@ -15,6 +15,10 @@ Images used on this site are from royalty-free sources (Unsplash License / Pexel
 | File | Description |
 |------|-------------|
 | `ventures/vulcira.jpg` | Lifestyle brand editorial composition |
+| `ventures/vulcira-cosmetics.jpg` | Vulcira cosmetics and skincare editorial |
+| `ventures/golden-days-vintage.jpg` | Golden Days vintage fashion editorial |
+| `ventures/chain-reaction-impact.jpg` | Chain Reaction schools and equipment fundraising |
+| `ventures/apollo-consulting.jpg` | Apollo Twelve consulting strategy editorial |
 | `ventures/chain-reaction.jpg` | Hope and light, nonprofit section |
 | `founder-portrait.jpeg` | Founder portrait — England, Miami skyline balcony |
 | `initiatives-hero.jpg` | Initiatives section supporting image |
