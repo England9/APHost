@@ -16,10 +16,23 @@ Images used on this site are from royalty-free sources (Unsplash License / Pexel
 |------|-------------|
 | `ventures/vulcira.jpg` | Lifestyle brand editorial composition |
 | `ventures/vulcira-cosmetics.jpg` | Vulcira cosmetics and skincare editorial |
+| `ventures/vulcira-fashion.jpg` | Vulcira apparel and fashion editorial |
+| `ventures/vulcira-lifestyle.jpg` | Vulcira lifestyle accessories editorial |
+| `ventures/vulcira-retail.jpg` | Vulcira retail display editorial |
 | `ventures/golden-days-vintage.jpg` | Golden Days vintage fashion editorial |
+| `ventures/golden-days-fashion.jpg` | Golden Days retro-inspired fashion |
+| `ventures/golden-days-craft.jpg` | Golden Days vintage craft and collectibles |
+| `ventures/golden-days-summer.jpg` | Golden Days nostalgic summer editorial |
 | `ventures/chain-reaction-impact.jpg` | Chain Reaction schools and equipment fundraising |
-| `ventures/apollo-consulting.jpg` | Apollo Twelve consulting strategy editorial |
-| `ventures/chain-reaction.jpg` | Hope and light, nonprofit section |
+| `ventures/chain-reaction-schools.jpg` | Chain Reaction classroom and education supplies |
+| `ventures/chain-reaction-community.jpg` | Chain Reaction community donation supplies |
+| `ventures/chain-reaction-sports.jpg` | Chain Reaction youth sports equipment |
+| `ventures/apollo-consulting-whiteboard.jpg` | Apollo Twelve consulting whiteboard with data |
+| `ventures/apollo-consulting-strategy.jpg` | Apollo Twelve strategy whiteboard planning |
+| `ventures/apollo-consulting-business.jpg` | Apollo Twelve business analytics workspace |
+| `ventures/apollo-consulting-operations.jpg` | Apollo Twelve operations and growth planning |
+| `ventures/apollo-consulting-metrics.jpg` | Apollo Twelve KPI metrics and reports |
+| `ventures/chain-reaction.jpg` | Hope and light, nonprofit hero |
 | `founder-portrait.jpeg` | Founder portrait — England, Miami skyline balcony |
 | `initiatives-hero.jpg` | Initiatives section supporting image |
 

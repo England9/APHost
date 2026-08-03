@@ -57,8 +57,8 @@ export const organizations: Organization[] = [
     fullDescription:
       'Apollo Twelve Consulting helps clients navigate growth, positioning, and the decisions that shape durable companies.',
     websiteUrl: null,
-    image: '/images/ventures/apollo-consulting.jpg',
-    imageAlt: 'Apollo Twelve consulting strategy session',
+    image: '/images/ventures/apollo-consulting-whiteboard.jpg',
+    imageAlt: 'Whiteboard with charts and business strategy data',
     actionLabel: 'Explore Consulting',
     pagePath: '/ventures/apollo-twelve-consulting',
     displayOrder: 3,

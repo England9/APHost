@@ -79,20 +79,20 @@ export const venturePages: VenturePage[] = [
         heading: 'Growing with intention',
         body:
           'Vulcira is built as a durable platform, not a flash-in-the-pan label. New categories, collaborations, and retail experiences are introduced deliberately — each one strengthening the identity rather than diluting it.',
-        image: '/images/ventures/vulcira.jpg',
-        imageAlt: 'Vulcira brand lifestyle editorial',
+        image: '/images/ventures/vulcira-fashion.jpg',
+        imageAlt: 'Vulcira apparel and fashion editorial',
       },
     ],
     gallery: [
       {
-        src: '/images/ventures/vulcira-cosmetics.jpg',
-        alt: 'Vulcira cosmetics collection',
-        caption: 'Cosmetics & skincare',
+        src: '/images/ventures/vulcira-lifestyle.jpg',
+        alt: 'Vulcira lifestyle accessories and wardrobe details',
+        caption: 'Lifestyle & accessories',
       },
       {
-        src: '/images/ventures/vulcira.jpg',
-        alt: 'Vulcira fashion editorial',
-        caption: 'Fashion & lifestyle',
+        src: '/images/ventures/vulcira-retail.jpg',
+        alt: 'Vulcira retail display with cosmetics and fashion',
+        caption: 'Retail & experiences',
       },
     ],
     cta: {
@@ -144,20 +144,20 @@ export const venturePages: VenturePage[] = [
         heading: 'Built to last beyond the moment',
         body:
           'Nostalgia is the starting point, not the whole story. Golden Days is approached with long-term intent — building trust through quality, authenticity, and respect for the cultures and eras we draw inspiration from.',
-        image: '/images/ventures/golden-days.jpg',
-        imageAlt: 'Golden Days warm nostalgic editorial',
+        image: '/images/ventures/golden-days-fashion.jpg',
+        imageAlt: 'Golden Days retro-inspired fashion editorial',
       },
     ],
     gallery: [
       {
-        src: '/images/ventures/golden-days-vintage.jpg',
-        alt: 'Vintage fashion rack with retro garments',
-        caption: 'Vintage inspiration',
+        src: '/images/ventures/golden-days-craft.jpg',
+        alt: 'Vintage craft goods and nostalgic collectibles',
+        caption: 'Craft & culture',
       },
       {
-        src: '/images/ventures/golden-days.jpg',
-        alt: 'Golden Days nostalgic editorial',
-        caption: 'Golden hour mood',
+        src: '/images/ventures/golden-days-summer.jpg',
+        alt: 'Nostalgic summer editorial with vintage details',
+        caption: 'Summer nostalgia',
       },
     ],
     cta: {
@@ -209,20 +209,20 @@ export const venturePages: VenturePage[] = [
         heading: 'A chain that keeps growing',
         body:
           'The name reflects our belief: one act of generosity inspires the next. Volunteers become advocates. Recipients become contributors. The project exists to keep that chain moving — quietly, consistently, and with respect for everyone involved.',
-        image: '/images/ventures/chain-reaction.jpg',
-        imageAlt: 'Warm light symbolizing hope and community',
+        image: '/images/ventures/chain-reaction-community.jpg',
+        imageAlt: 'Community donation supplies and volunteer fundraising',
       },
     ],
     gallery: [
       {
-        src: '/images/ventures/chain-reaction-impact.jpg',
-        alt: 'Community fundraising and school equipment donation',
-        caption: 'Schools & equipment',
+        src: '/images/ventures/chain-reaction-schools.jpg',
+        alt: 'Classroom supplies and school education resources',
+        caption: 'Schools & education',
       },
       {
-        src: '/images/ventures/chain-reaction.jpg',
-        alt: 'Hope and community impact',
-        caption: 'Community causes',
+        src: '/images/ventures/chain-reaction-sports.jpg',
+        alt: 'Athletic equipment and sports gear for schools',
+        caption: 'Sports & equipment',
       },
     ],
     cta: {
@@ -238,8 +238,8 @@ export const venturePages: VenturePage[] = [
     tagline: 'Clarity, discipline, long-term thinking.',
     intro:
       'Apollo Twelve Consulting provides advisory services to founders, brands, and organizations navigating growth, positioning, and operational decisions. Drawing on the same principles that guide our own ventures — restraint, quality, and a long view — we help clients build structures and strategies designed to endure.',
-    image: '/images/ventures/apollo-consulting.jpg',
-    imageAlt: 'Apollo Twelve consulting strategy session',
+    image: '/images/ventures/apollo-consulting-whiteboard.jpg',
+    imageAlt: 'Whiteboard with charts and business strategy data',
     focusAreas: [
       {
         title: 'Brand Strategy',
@@ -262,8 +262,8 @@ export const venturePages: VenturePage[] = [
         heading: 'Advice rooted in practice',
         body:
           'Apollo Twelve Consulting is not theoretical. Our recommendations come from building real ventures — lifestyle brands, nonprofit programs, and commercial operations — and learning what works when the stakes are personal and the timeline is long.',
-        image: '/images/ventures/apollo-consulting.jpg',
-        imageAlt: 'Professional consulting and strategy planning',
+        image: '/images/ventures/apollo-consulting-business.jpg',
+        imageAlt: 'Business analytics dashboard and professional workspace',
       },
       {
         heading: 'Selective engagement',
@@ -274,20 +274,20 @@ export const venturePages: VenturePage[] = [
         heading: 'From strategy to execution',
         body:
           'Consulting does not end at a slide deck. We stay involved through implementation — helping clients translate strategy into action, navigate obstacles, and adjust course without losing sight of the original purpose.',
-        image: '/images/hero-editorial.jpg',
-        imageAlt: 'Apollo Twelve editorial vision',
+        image: '/images/ventures/apollo-consulting-operations.jpg',
+        imageAlt: 'Business reports, charts, and operational planning documents',
       },
     ],
     gallery: [
       {
-        src: '/images/ventures/apollo-consulting.jpg',
-        alt: 'Strategy consulting workspace',
-        caption: 'Strategic advisory',
+        src: '/images/ventures/apollo-consulting-strategy.jpg',
+        alt: 'Strategy whiteboard with charts and sticky notes',
+        caption: 'Strategy & planning',
       },
       {
-        src: '/images/hero-editorial.jpg',
-        alt: 'Apollo Twelve editorial',
-        caption: 'Built on experience',
+        src: '/images/ventures/apollo-consulting-metrics.jpg',
+        alt: 'Business metrics reports and KPI analytics',
+        caption: 'Metrics & growth',
       },
     ],
     cta: {
