@@ -1,0 +1,129 @@
+---
+import { navigation } from '../../data/site';
+import { ventureNavLinks } from '../../data/venture-pages';
+---
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[200] flex translate-x-full flex-col bg-[var(--color-canvas)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] pointer-events-none lg:hidden"
+  data-menu-panel
+  aria-hidden="true"
+  inert
+>
+  <div class="flex items-center justify-between border-b hairline px-[var(--spacing-content)] pb-5 pt-6 safe-top">
+    <p class="font-serif text-[0.8125rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)]">Apollo Twelve</p>
+    <button
+      type="button"
+      class="flex h-11 w-11 items-center justify-center font-sans text-[1.75rem] leading-none text-[var(--color-ink-muted)]"
+      aria-label="Close menu"
+      data-menu-close
+    >
+      ×
+    </button>
+  </div>
+
+  <div class="flex flex-1 flex-col justify-between overflow-y-auto px-[var(--spacing-content)] pb-[max(2rem,env(safe-area-inset-bottom))] pt-10">
+    <nav class="flex flex-col gap-10" aria-label="Mobile">
+      <div class="space-y-6">
+        <p class="label-caps">Navigate</p>
+        {
+          navigation.map((item) => (
+            <a
+              href={item.href}
+              class="block font-serif text-[clamp(2rem,8vw,2.75rem)] leading-[1.05] text-[var(--color-ink)]"
+              data-menu-link
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="space-y-6 border-t hairline pt-10">
+        <p class="label-caps">Ventures</p>
+        {
+          ventureNavLinks.map((link) => (
+            <a
+              href={link.href}
+              class="block font-serif text-[clamp(1.5rem,6vw,2rem)] leading-[1.1] text-[var(--color-ink-muted)] transition-colors hover:text-[var(--color-ink)]"
+              data-menu-link
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+
+    <a
+      href="/#contact"
+      class="mt-12 inline-flex items-center gap-2 self-start border hairline px-6 py-3 font-sans text-[0.6875rem] font-medium tracking-[0.1em] uppercase text-[var(--color-ink-muted)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-ink)]"
+      data-menu-link
+    >
+      Get in Touch
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  function initMobileMenu() {
+    const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+    const closeButton = document.querySelector<HTMLButtonElement>('[data-menu-close]');
+    const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+    const bars = toggle?.querySelectorAll('[data-bar]');
+    const links = panel?.querySelectorAll<HTMLAnchorElement>('[data-menu-link]');
+
+    if (!toggle || !panel) return;
+
+    let open = false;
+
+    function setMenuState(next: boolean) {
+      open = next;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      panel.setAttribute('aria-hidden', String(!open));
+      panel.classList.toggle('translate-x-0', open);
+      panel.classList.toggle('translate-x-full', !open);
+      panel.classList.toggle('pointer-events-auto', open);
+      panel.classList.toggle('pointer-events-none', !open);
+
+      if (open) {
+        panel.removeAttribute('inert');
+        document.body.classList.add('overflow-hidden');
+      } else {
+        panel.setAttribute('inert', '');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      if (bars && bars.length >= 3) {
+        bars[0].classList.toggle('translate-y-[6px]', open);
+        bars[0].classList.toggle('rotate-45', open);
+        bars[1].classList.toggle('opacity-0', open);
+        bars[2].classList.toggle('-translate-y-[6px]', open);
+        bars[2].classList.toggle('-rotate-45', open);
+      }
+    }
+
+    toggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      setMenuState(!open);
+    });
+
+    closeButton?.addEventListener('click', () => setMenuState(false));
+    links?.forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && open) setMenuState(false);
+    });
+  }
+
+  initMobileMenu();
+  document.addEventListener('astro:page-load', initMobileMenu);
+</script>
+
+<style>
+  .safe-top {
+    padding-top: max(1.5rem, env(safe-area-inset-top));
+  }
+</style>
