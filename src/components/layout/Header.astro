@@ -1,14 +1,15 @@
 ---
 import { navigation } from '../../data/site';
 import Logo from '../ui/Logo.astro';
-import MobileMenu from './MobileMenu.astro';
+import MobileMenuToggle from './MobileMenuToggle.astro';
 import VenturesDropdown from './VenturesDropdown.astro';
 ---
 
-<header
-  class="fixed inset-x-0 top-0 z-[90] bg-[color-mix(in_srgb,var(--color-canvas)_92%,transparent)] backdrop-blur-sm transition-[background-color] duration-300"
-  data-header
->
+<header class="fixed inset-x-0 top-0 z-[90]" data-header>
+  <div
+    class="border-b border-[var(--color-gold)]/30 bg-[color-mix(in_srgb,var(--color-canvas)_92%,transparent)] backdrop-blur-sm transition-[background-color] duration-300"
+    data-header-bar
+  >
   <div class="content-wrap-wide flex items-center justify-between gap-8 px-[var(--spacing-content)] py-5 md:py-6">
     <Logo showMark={true} />
 
@@ -36,18 +37,18 @@ import VenturesDropdown from './VenturesDropdown.astro';
       }
     </nav>
 
-    <MobileMenu />
+    <MobileMenuToggle />
   </div>
-  <div class="h-px bg-[var(--color-gold)]/30" aria-hidden="true"></div>
+  </div>
 </header>
 
 <script>
-  const header = document.querySelector('[data-header]');
+  const headerBar = document.querySelector('[data-header-bar]');
 
   function updateHeader() {
-    if (!header) return;
+    if (!headerBar) return;
     const scrolled = window.scrollY > 24;
-    header.classList.toggle('bg-[color-mix(in_srgb,var(--color-canvas)_96%,transparent)]', scrolled);
+    headerBar.classList.toggle('bg-[color-mix(in_srgb,var(--color-canvas)_96%,transparent)]', scrolled);
   }
 
   function setActiveNav() {

@@ -3,12 +3,17 @@ import { getHomepageVentures } from '../../data/organizations';
 import VentureCard from '../ui/VentureCard.astro';
 
 const ventures = getHomepageVentures().filter((org) => org.category !== 'nonprofit');
-const [vulcira, goldenDays] = ventures;
 
 const ventureMeta = [
-  { org: vulcira, index: '01', eyebrow: 'Lifestyle Brand' },
-  { org: goldenDays, index: '02', eyebrow: 'Nostalgia & Culture' },
-];
+  { slug: 'vulcira', index: '01', eyebrow: 'Lifestyle Brand' },
+  { slug: 'golden-days', index: '02', eyebrow: 'Vintage Fashion' },
+  { slug: 'apollo-twelve-consulting', index: '03', eyebrow: 'Business Advisory' },
+]
+  .map(({ slug, index, eyebrow }) => {
+    const org = ventures.find((item) => item.id === slug);
+    return org ? { org, index, eyebrow } : null;
+  })
+  .filter(Boolean);
 ---
 
 <section id="ventures" class="section-pad border-t hairline" aria-labelledby="ventures-heading">
@@ -20,8 +25,11 @@ const ventureMeta = [
           id="ventures-heading"
           class="mt-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-[1.12] text-[var(--color-ink)]"
         >
-          Two commercial ventures. One shared standard.
+          Three ventures. Shared standard for quality.
         </h2>
+        <p class="mt-5 max-w-xl text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
+          Vulcira, Golden Days, and Apollo Twelve Consulting are the commercial ventures under Apollo Twelve LLC. Each serves a different market. All are held to the same bar for product, service, and execution.
+        </p>
       </div>
       <a
         href="/ventures/vulcira"
@@ -32,19 +40,19 @@ const ventureMeta = [
       </a>
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2 lg:gap-8">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
       {
-        ventureMeta.map(({ org, index, eyebrow }) =>
-          org ? (
+        ventureMeta.map((item) =>
+          item ? (
             <VentureCard
-              index={index}
-              eyebrow={eyebrow}
-              name={org.name}
-              description={org.shortDescription}
-              href={org.pagePath}
-              actionLabel={org.actionLabel}
-              image={org.image}
-              imageAlt={org.imageAlt}
+              index={item.index}
+              eyebrow={item.eyebrow}
+              name={item.org.name}
+              description={item.org.shortDescription}
+              href={item.org.pagePath}
+              actionLabel={item.org.actionLabel}
+              image={item.org.image}
+              imageAlt={item.org.imageAlt}
             />
           ) : null,
         )

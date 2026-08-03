@@ -39,260 +39,260 @@ export const venturePages: VenturePage[] = [
     slug: 'vulcira',
     name: 'Vulcira',
     eyebrow: 'Lifestyle Brand',
-    title: 'Cosmetics, fashion, and the art of considered living.',
-    tagline: 'Beauty and style with intention.',
+    title: 'Vulcira: cosmetics, fashion, and lifestyle products.',
+    tagline: 'A lifestyle brand built on product quality.',
     intro:
-      'Vulcira is a lifestyle brand at the intersection of cosmetics, fashion, and everyday culture. We develop products and experiences for people who care about how things feel, look, and last — from skincare rituals and color palettes to wardrobe essentials shaped by a clear point of view.',
+      'Vulcira is a lifestyle brand under Apollo Twelve LLC. We sell cosmetics, skincare, fragrance, and fashion for customers who care about ingredients, fit, and design. Vulcira products are sold direct-to-consumer and through select retail partners.',
     image: '/images/ventures/vulcira.jpg',
-    imageAlt: 'Vulcira lifestyle brand editorial photograph',
+    imageAlt: 'Vulcira lifestyle brand cosmetics and fashion',
     focusAreas: [
       {
-        title: 'Cosmetics',
+        title: 'Cosmetics & Skincare',
         description:
-          'Skincare, color, and fragrance developed with clean formulations and editorial restraint — products designed for daily ritual, not trend cycles.',
+          'Vulcira develops skincare, makeup, and fragrance lines with clean formulations and packaging designed for daily use. Products are tested for quality and consistency before release.',
       },
       {
-        title: 'Fashion',
+        title: 'Fashion & Apparel',
         description:
-          'Apparel and accessories built around versatile silhouettes, quality materials, and a wardrobe philosophy that favors longevity over volume.',
+          'Vulcira apparel includes wardrobe essentials, accessories, and seasonal collections built around versatile fits and durable fabrics. We focus on pieces customers keep, not one-season trends.',
       },
       {
-        title: 'Culture',
+        title: 'Brand & Retail',
         description:
-          'Editorial storytelling, collaborations, and experiences that connect Vulcira to the communities and aesthetics that shape modern living.',
+          'Vulcira builds brand awareness through editorial content, partnerships, and retail experiences. We are expanding into new product categories and distribution channels as the brand grows.',
       },
     ],
     sections: [
       {
-        heading: 'A brand built on atmosphere',
+        heading: 'Products customers use every day',
         body:
-          'Vulcira is not a single product line — it is a sensibility. Warm light, tactile materials, and a confidence that comes from knowing what you like. Every release is considered in context: how it fits into a morning routine, a wardrobe, a room, a life.',
+          'Vulcira makes products people reach for in the morning and wear throughout the week. That includes skincare routines, color cosmetics, fragrance, and apparel. Every product line is developed with a consistent aesthetic and quality standard across the brand.',
         image: '/images/ventures/vulcira-cosmetics.jpg',
-        imageAlt: 'Vulcira cosmetics and skincare products in editorial styling',
+        imageAlt: 'Vulcira cosmetics and skincare product line',
       },
       {
-        heading: 'Quality you can feel',
+        heading: 'Quality standards across every category',
         body:
-          'From formulation to fabric, Vulcira prioritizes ingredients and construction that hold up over time. We partner with makers who share our standards — transparent sourcing, responsible production, and design that earns its place in your daily life.',
+          'We source ingredients and materials from suppliers who meet our specifications. Manufacturing partners are audited for consistency and safety. Vulcira products are priced to reflect the quality of what goes into them.',
       },
       {
-        heading: 'Growing with intention',
+        heading: 'A brand built to grow',
         body:
-          'Vulcira is built as a durable platform, not a flash-in-the-pan label. New categories, collaborations, and retail experiences are introduced deliberately — each one strengthening the identity rather than diluting it.',
-        image: '/images/ventures/vulcira.jpg',
-        imageAlt: 'Vulcira brand lifestyle editorial',
+          'Vulcira is an operating brand, not a one-off collection. We are adding product categories, retail partnerships, and geographic reach on a planned timeline. Growth is deliberate so the brand stays coherent as it scales.',
+        image: '/images/ventures/vulcira-fashion.jpg',
+        imageAlt: 'Vulcira fashion and apparel collection',
       },
     ],
     gallery: [
       {
-        src: '/images/ventures/vulcira-cosmetics.jpg',
-        alt: 'Vulcira cosmetics collection',
-        caption: 'Cosmetics & skincare',
+        src: '/images/ventures/vulcira-lifestyle.jpg',
+        alt: 'Vulcira lifestyle accessories and product styling',
+        caption: 'Lifestyle products',
       },
       {
-        src: '/images/ventures/vulcira.jpg',
-        alt: 'Vulcira fashion editorial',
-        caption: 'Fashion & lifestyle',
+        src: '/images/ventures/vulcira-retail.jpg',
+        alt: 'Vulcira retail display with cosmetics and fashion',
+        caption: 'Retail partnerships',
       },
     ],
     cta: {
-      heading: 'Interested in Vulcira?',
-      body: 'Whether you are a collaborator, retailer, or early supporter — we welcome thoughtful conversations about the brand.',
+      heading: 'Work with Vulcira',
+      body: 'For wholesale, retail partnerships, press inquiries, or collaboration opportunities, contact Apollo Twelve LLC through our contact form.',
     },
   },
   {
     slug: 'golden-days',
     name: 'Golden Days LLC',
-    eyebrow: 'Vintage & Nostalgia',
-    title: 'Vintage nostalgia and fashion for the modern day.',
-    tagline: 'The feeling of youth, made wearable.',
+    eyebrow: 'Vintage Fashion',
+    title: 'Golden Days LLC: vintage fashion and nostalgia-driven products.',
+    tagline: 'Classic style for modern wardrobes.',
     intro:
-      'Golden Days is devoted to the warmth, optimism, and emotional texture of earlier chapters — summers that felt endless, friendships that felt uncomplicated, the quiet confidence of being young. We translate that nostalgia into vintage-inspired fashion, curated goods, and experiences that feel honest rather than performative.',
+      'Golden Days LLC is a fashion and consumer goods company under Apollo Twelve LLC. We design and sell vintage-inspired clothing, curated apparel, and nostalgia-themed products for customers who want style with a connection to American culture from the 1960s through the 1990s.',
     image: '/images/ventures/golden-days.jpg',
-    imageAlt: 'Golden Days vintage nostalgia fashion editorial',
+    imageAlt: 'Golden Days vintage fashion brand',
     focusAreas: [
       {
-        title: 'Vintage Fashion',
+        title: 'Vintage-Inspired Fashion',
         description:
-          'Curated and original pieces inspired by decades past — reworked vintage, limited runs, and capsule collections with a timeless sensibility.',
+          'Golden Days designs and sources clothing inspired by mid-century and retro American style. Collections include reworked vintage pieces, original designs, and limited-run apparel.',
       },
       {
-        title: 'Nostalgia Culture',
+        title: 'Nostalgia Products',
         description:
-          'Editorial content, pop-ups, and experiences that celebrate the music, film, and aesthetics of eras that still resonate today.',
+          'Beyond apparel, Golden Days sells consumer goods that tap into cultural nostalgia: accessories, home goods, and gift items tied to music, film, and everyday life from past decades.',
       },
       {
-        title: 'Modern Craft',
+        title: 'Retail & Events',
         description:
-          'New products designed with retro sensibility and contemporary quality — made to be worn, kept, and passed along.',
+          'Golden Days sells online and through pop-up retail events. We use editorial content and community events to connect with customers who share an interest in vintage culture and classic style.',
       },
     ],
     sections: [
       {
-        heading: 'Not imitation — atmosphere',
+        heading: 'Fashion rooted in real nostalgia',
         body:
-          'Golden Days does not chase trends or copy decades wholesale. We look for the emotional through-line — the golden-hour light, the worn-in denim, the record-store afternoon — and build products and experiences that carry that feeling into the present.',
+          'Golden Days does not copy trends from a mood board. Our designs reference specific eras, fabrics, and silhouettes that aged well. The goal is clothing and products that feel familiar without looking like a costume.',
         image: '/images/ventures/golden-days-vintage.jpg',
-        imageAlt: 'Vintage clothing and nostalgic fashion styling',
+        imageAlt: 'Golden Days vintage clothing collection',
       },
       {
-        heading: 'Fashion with a story',
+        heading: 'Products with a clear audience',
         body:
-          'Every piece in a Golden Days collection is chosen or designed with narrative in mind. Vintage finds are restored with care. Original garments reference silhouettes and fabrics that aged well. The result is a wardrobe that feels personal, not generic.',
+          'Our customers are people who grew up with or admire the culture of earlier decades. Golden Days speaks to them through product design, packaging, and brand storytelling that respects the source material.',
       },
       {
-        heading: 'Built to last beyond the moment',
+        heading: 'Built as a lasting brand',
         body:
-          'Nostalgia is the starting point, not the whole story. Golden Days is approached with long-term intent — building trust through quality, authenticity, and respect for the cultures and eras we draw inspiration from.',
-        image: '/images/ventures/golden-days.jpg',
-        imageAlt: 'Golden Days warm nostalgic editorial',
+          'Golden Days LLC is structured to operate long term. We release collections on a seasonal schedule, build repeat customers, and invest in product quality so items hold up to regular wear.',
+        image: '/images/ventures/golden-days-fashion.jpg',
+        imageAlt: 'Golden Days retro-inspired fashion editorial',
       },
     ],
     gallery: [
       {
-        src: '/images/ventures/golden-days-vintage.jpg',
-        alt: 'Vintage fashion rack with retro garments',
-        caption: 'Vintage inspiration',
+        src: '/images/ventures/golden-days-craft.jpg',
+        alt: 'Golden Days vintage craft and nostalgia products',
+        caption: 'Nostalgia products',
       },
       {
-        src: '/images/ventures/golden-days.jpg',
-        alt: 'Golden Days nostalgic editorial',
-        caption: 'Golden hour mood',
+        src: '/images/ventures/golden-days-summer.jpg',
+        alt: 'Golden Days summer nostalgia editorial',
+        caption: 'Seasonal collections',
       },
     ],
     cta: {
-      heading: 'Connect with Golden Days',
-      body: 'For collaborations, wholesale inquiries, or to learn about upcoming drops — reach out through Apollo Twelve.',
+      heading: 'Partner with Golden Days',
+      body: 'For wholesale, retail, or press inquiries about Golden Days LLC, reach out through the Apollo Twelve LLC contact form.',
     },
   },
   {
     slug: 'chain-reaction-project',
     name: 'The Chain Reaction Project',
     eyebrow: 'Nonprofit',
-    title: 'Raising money for causes, schools, and communities.',
-    tagline: 'Small actions. Lasting impact.',
+    title: 'The Chain Reaction Project: fundraising for schools and communities.',
+    tagline: 'Raising money where it is needed most.',
     intro:
-      'The Chain Reaction Project is a nonprofit initiative focused on fundraising for schools, sports equipment, arts programs, community causes, and the people who need support most. We believe generosity compounds — one contribution leads to another, and meaningful change builds over time.',
+      'The Chain Reaction Project is a nonprofit initiative of Apollo Twelve LLC. We raise money for schools, youth sports programs, arts education, and community causes. Donations go directly to verified needs: classroom supplies, athletic equipment, instruments, and program funding.',
     image: '/images/ventures/chain-reaction.jpg',
-    imageAlt: 'Community impact and hope',
+    imageAlt: 'The Chain Reaction Project nonprofit community impact',
     focusAreas: [
       {
         title: 'Schools & Education',
         description:
-          'Fundraising for classroom supplies, technology, field trips, and programs that give students resources they would not otherwise have.',
+          'We fundraise for classroom supplies, technology, textbooks, field trips, and after-school programs. Schools and teachers submit needs. We verify requests and deliver resources.',
       },
       {
         title: 'Sports & Equipment',
         description:
-          'Providing athletic gear, uniforms, and facility support so young athletes can compete safely and with pride.',
+          'The Chain Reaction Project provides athletic gear, uniforms, helmets, and facility support for youth sports teams that lack funding for basic equipment.',
       },
       {
         title: 'Community Causes',
         description:
-          'Partnering with local organizations on food drives, disaster relief, health initiatives, and programs that strengthen neighborhoods.',
+          'We partner with local organizations on food drives, disaster relief, health programs, and neighborhood initiatives. Every campaign has a defined goal, budget, and reporting timeline.',
       },
     ],
     sections: [
       {
-        heading: 'Fundraising with purpose',
+        heading: 'Fundraising tied to real needs',
         body:
-          'The Chain Reaction Project organizes campaigns, events, and partnerships designed to raise real money for real needs. Every initiative starts with listening — understanding what a school, team, or community actually requires before asking for support.',
+          'Every Chain Reaction Project campaign starts with a specific request: a school needs laptops, a team needs uniforms, a community center needs supplies. We raise money against that need, purchase or deliver resources, and report back to donors on what was funded.',
         image: '/images/ventures/chain-reaction-impact.jpg',
-        imageAlt: 'School equipment and community fundraising supplies',
+        imageAlt: 'School supplies and equipment funded by Chain Reaction Project',
       },
       {
-        heading: 'Accountability at every step',
+        heading: 'Transparent use of donations',
         body:
-          'Donors deserve transparency. Funds are directed to verified needs, tracked through completion, and reported back to the communities and supporters who made the work possible. Impact is measured by outcomes, not visibility.',
+          'Donors receive updates on how their contributions are used. We track spending, document deliveries, and share results with schools, teams, and community partners. Administrative costs are kept low so the majority of funds reach the intended recipients.',
       },
       {
-        heading: 'A chain that keeps growing',
+        heading: 'Community-driven impact',
         body:
-          'The name reflects our belief: one act of generosity inspires the next. Volunteers become advocates. Recipients become contributors. The project exists to keep that chain moving — quietly, consistently, and with respect for everyone involved.',
-        image: '/images/ventures/chain-reaction.jpg',
-        imageAlt: 'Warm light symbolizing hope and community',
+          'The Chain Reaction Project works with volunteers, local businesses, and partner organizations to expand reach. People who benefit from one campaign often support the next. That is the chain reaction we aim to create.',
+        image: '/images/ventures/chain-reaction-community.jpg',
+        imageAlt: 'Community donation supplies organized for distribution',
       },
     ],
     gallery: [
       {
-        src: '/images/ventures/chain-reaction-impact.jpg',
-        alt: 'Community fundraising and school equipment donation',
-        caption: 'Schools & equipment',
+        src: '/images/ventures/chain-reaction-schools.jpg',
+        alt: 'Classroom supplies funded for schools',
+        caption: 'School programs',
       },
       {
-        src: '/images/ventures/chain-reaction.jpg',
-        alt: 'Hope and community impact',
-        caption: 'Community causes',
+        src: '/images/ventures/chain-reaction-sports.jpg',
+        alt: 'Youth sports equipment provided through fundraising',
+        caption: 'Sports equipment',
       },
     ],
     cta: {
       heading: 'Support the Chain Reaction Project',
-      body: 'Whether you want to donate, volunteer, nominate a cause, or partner on a campaign — we would like to hear from you.',
+      body: 'To donate, volunteer, nominate a school or cause, or partner on a fundraising campaign, contact Apollo Twelve LLC.',
     },
   },
   {
     slug: 'apollo-twelve-consulting',
     name: 'Apollo Twelve Consulting',
-    eyebrow: 'Advisory',
-    title: 'Strategic guidance for ventures that aim to last.',
-    tagline: 'Clarity, discipline, long-term thinking.',
+    eyebrow: 'Business Advisory',
+    title: 'Apollo Twelve Consulting: strategy and operations for growing businesses.',
+    tagline: 'Practical advice from operators, not theorists.',
     intro:
-      'Apollo Twelve Consulting provides advisory services to founders, brands, and organizations navigating growth, positioning, and operational decisions. Drawing on the same principles that guide our own ventures — restraint, quality, and a long view — we help clients build structures and strategies designed to endure.',
-    image: '/images/ventures/apollo-consulting.jpg',
-    imageAlt: 'Apollo Twelve consulting strategy session',
+      'Apollo Twelve Consulting is the advisory practice of Apollo Twelve LLC. We help founders and brand owners with strategy, positioning, operations, and growth planning. Our team has built and run the same types of businesses we advise: consumer brands, retail operations, and nonprofit programs.',
+    image: '/images/ventures/apollo-consulting-whiteboard.jpg',
+    imageAlt: 'Apollo Twelve Consulting strategy whiteboard with business data',
     focusAreas: [
       {
         title: 'Brand Strategy',
         description:
-          'Positioning, narrative, and identity development for companies that want coherence across products, channels, and customer touchpoints.',
+          'We help companies define their positioning, messaging, and go-to-market approach. This includes competitive analysis, customer research, and brand identity development across product, marketing, and sales channels.',
       },
       {
         title: 'Venture Advisory',
         description:
-          "Guidance for early-stage founders on structure, go-to-market planning, partnership evaluation, and the decisions that shape a company's first years.",
+          'For early-stage founders, we provide guidance on company structure, fundraising preparation, partnership evaluation, and the operational decisions that shape a business in its first one to three years.',
       },
       {
         title: 'Operations & Growth',
         description:
-          'Practical support on scaling thoughtfully — team structure, vendor relationships, process design, and the operational backbone behind sustainable growth.',
+          'We help established brands scale: supply chain setup, team structure, vendor management, process design, and the systems needed to grow revenue without losing quality or margin.',
       },
     ],
     sections: [
       {
-        heading: 'Advice rooted in practice',
+        heading: 'Consulting based on operating experience',
         body:
-          'Apollo Twelve Consulting is not theoretical. Our recommendations come from building real ventures — lifestyle brands, nonprofit programs, and commercial operations — and learning what works when the stakes are personal and the timeline is long.',
-        image: '/images/ventures/apollo-consulting.jpg',
-        imageAlt: 'Professional consulting and strategy planning',
+          'Apollo Twelve Consulting is staffed by people who have built brands, managed P&Ls, and handled the day-to-day work of running a company. Our recommendations are grounded in what we have done ourselves, not textbook frameworks alone.',
+        image: '/images/ventures/apollo-consulting-business.jpg',
+        imageAlt: 'Business analytics dashboard and consulting workspace',
       },
       {
-        heading: 'Selective engagement',
+        heading: 'Selective client engagements',
         body:
-          'We work with a limited number of clients at a time. Engagements are chosen based on alignment — shared values around quality, transparency, and building something that matters beyond a quarterly cycle.',
+          'We take on a limited number of clients at a time. Engagements are scoped to specific outcomes: a positioning project, an operational audit, a go-to-market plan. We work with companies whose values and ambitions align with how we operate our own ventures.',
       },
       {
-        heading: 'From strategy to execution',
+        heading: 'Strategy through execution',
         body:
-          'Consulting does not end at a slide deck. We stay involved through implementation — helping clients translate strategy into action, navigate obstacles, and adjust course without losing sight of the original purpose.',
-        image: '/images/hero-editorial.jpg',
-        imageAlt: 'Apollo Twelve editorial vision',
+          'We do not deliver a report and walk away. Apollo Twelve Consulting stays involved through implementation: helping clients hire, set up systems, launch products, and adjust plans based on real results.',
+        image: '/images/ventures/apollo-consulting-operations.jpg',
+        imageAlt: 'Business operations planning documents and growth reports',
       },
     ],
     gallery: [
       {
-        src: '/images/ventures/apollo-consulting.jpg',
-        alt: 'Strategy consulting workspace',
-        caption: 'Strategic advisory',
+        src: '/images/ventures/apollo-consulting-strategy.jpg',
+        alt: 'Strategy whiteboard with charts and planning notes',
+        caption: 'Strategy planning',
       },
       {
-        src: '/images/hero-editorial.jpg',
-        alt: 'Apollo Twelve editorial',
-        caption: 'Built on experience',
+        src: '/images/ventures/apollo-consulting-metrics.jpg',
+        alt: 'Business KPI metrics and performance reports',
+        caption: 'Performance tracking',
       },
     ],
     cta: {
-      heading: 'Start a conversation',
-      body: 'If you are building something with long-term intent and want a thoughtful partner — reach out to discuss how Apollo Twelve Consulting can help.',
+      heading: 'Hire Apollo Twelve Consulting',
+      body: 'To discuss a consulting engagement, describe your business and what you need help with through the Apollo Twelve LLC contact form.',
     },
   },
 ];
