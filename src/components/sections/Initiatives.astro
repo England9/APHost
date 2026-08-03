@@ -19,35 +19,37 @@ const slides = initiativesContent.pillars;
       </p>
     </div>
 
-    <div class="relative mx-auto max-w-3xl">
-      <div
-        id="pillars-carousel"
-        class="pillars-carousel flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2"
-        role="region"
-        aria-roledescription="carousel"
-        aria-label="What we stand for"
-        tabindex="0"
-      >
-        {
-          slides.map((pillar, index) => (
-            <article
-              class="pillar-slide min-w-full shrink-0 snap-start border-t border-[var(--color-gold)]/40 pt-8 text-center"
-              aria-roledescription="slide"
-              aria-label={`${index + 1} of ${slides.length}`}
-              data-slide={index}
-            >
-              <p class="font-sans text-[0.75rem] tracking-[0.12em] text-[var(--color-ink-faint)]">
-                {String(index + 1).padStart(2, '0')}
-              </p>
-              <h3 class="mt-4 font-serif text-[clamp(1.375rem,2.5vw,1.75rem)] text-[var(--color-ink)]">
-                {pillar.title}
-              </h3>
-              <p class="mx-auto mt-5 max-w-2xl text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
-                {pillar.body}
-              </p>
-            </article>
-          ))
-        }
+    <div class="relative mx-auto w-full max-w-3xl">
+      <div class="overflow-hidden">
+        <div
+          id="pillars-carousel"
+          class="pillars-carousel flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="What we stand for"
+          tabindex="0"
+        >
+          {
+            slides.map((pillar, index) => (
+              <article
+                class="pillar-slide w-full shrink-0 grow-0 basis-full snap-start border-t border-[var(--color-gold)]/40 px-1 pt-8 text-center"
+                aria-roledescription="slide"
+                aria-label={`${index + 1} of ${slides.length}`}
+                data-slide={index}
+              >
+                <p class="font-sans text-[0.75rem] tracking-[0.12em] text-[var(--color-ink-faint)]">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
+                <h3 class="mt-4 font-serif text-[clamp(1.375rem,4vw,1.75rem)] text-[var(--color-ink)]">
+                  {pillar.title}
+                </h3>
+                <p class="mx-auto mt-5 max-w-2xl text-[0.9375rem] leading-relaxed text-[var(--color-ink-muted)]">
+                  {pillar.body}
+                </p>
+              </article>
+            ))
+          }
+        </div>
       </div>
 
       <div class="mt-8 flex flex-col items-center gap-6 border-t hairline pt-6">
@@ -128,8 +130,8 @@ const slides = initiativesContent.pillars;
 
 <script>
   const carousel = document.getElementById('pillars-carousel');
-  const prevButton = document.getElementById('pillars-prev');
-  const nextButton = document.getElementById('pillars-next');
+  const prevButton = document.getElementById('pillars-prev') as HTMLButtonElement | null;
+  const nextButton = document.getElementById('pillars-next') as HTMLButtonElement | null;
   const dots = document.querySelectorAll<HTMLButtonElement>('[data-dot]');
   const slides = carousel?.querySelectorAll<HTMLElement>('[data-slide]');
 
@@ -137,11 +139,7 @@ const slides = initiativesContent.pillars;
     let activeIndex = 0;
 
     function getSlideWidth() {
-      const slide = slides[0];
-      if (!slide) return carousel.clientWidth;
-      const styles = getComputedStyle(carousel);
-      const gap = parseFloat(styles.columnGap || styles.gap || '0');
-      return slide.offsetWidth + gap;
+      return carousel.clientWidth;
     }
 
     function updateControls() {
@@ -185,7 +183,8 @@ const slides = initiativesContent.pillars;
     }, { passive: true });
 
     window.addEventListener('resize', () => {
-      goToSlide(activeIndex);
+      carousel.scrollTo({ left: activeIndex * getSlideWidth(), behavior: 'auto' });
+      updateControls();
     });
 
     updateControls();
